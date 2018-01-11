@@ -1,0 +1,71 @@
+<div class="game-create mt-4">
+	<div class="card w-100">
+		<div class="card-header">
+			<h4 class="card-title">Create a New Game</h4>
+		</div>
+		<div class="card-body">
+			<form #gameForm="ngForm" (ngSubmit)="createGame()">
+
+			  	<div class="row" *ngIf="locations.length === 0">
+		        	<span class="col">
+		          		<p>No locations to choose from!</p>
+		        	</span>
+		      	</div>
+
+		      	<div class="form-row mt-3" *ngIf="locations.length > 0">
+		        	<div class="col">
+		          		<label for="location-select">Location</label>
+				    	<select #loc class="form-control" id="locationID" name="location-select" [(ngModel)]="location_id" required>
+				    		<option value="" [disabled]="true" [selected]="true">Select a location</option>
+				    		<option *ngFor="let location of locations" [ngValue]="location.locationID">{{location.address}}</option>
+				    	</select>
+					</div>
+		      	</div>
+
+		      	<div class="form-row mt-3">
+		        	<span class="col">
+		          		<textarea #des class="form-control" id="loc_description" name="loc_description" [(ngModel)]="description" placeholder="Game Description" required rows="3"></textarea>
+		        	</span>
+		      	</div>
+
+		      	<div class="row mt-3">
+					<div class="col-md-6 text-center">
+						<label>Minimum Rating</label>
+						<rating [ratingValue]="0" (onRated)="processRating($event)" class="ml-4"></rating>
+					</div>
+					<div class="col-md-6 text-center">
+						<label for="date-select">Date</label>
+						<input #date_of_game class="form-control" type="date" id="date-select" name="date-select" [(ngModel)]="game_date" required> 
+					</div>
+			  	</div>
+
+			  	<div class="form-row mt-3">
+					<div class="col-md-3">
+						<label for="hour-dropdown">Hour</label>
+						<select #game_hour class="form-control" id="hour" name="hour" [(ngModel)]="hour" required>
+							<option></option>
+							<option *ngFor="let hr of ['1','2','3','4','5','6','7','8','9','10','11','12']" [ngValue]="hr">{{hr}}</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label for="minute-dropdown">Minute</label>
+						<select #game_minute class="form-control" id="minute" name="minute" [(ngModel)]="minute" required>
+							<option></option>
+							<option *ngFor="let min of ['00', '15', '30', '45']" [ngValue]="minute">{{min}}</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<label for="amORpm-dropdown">AM or PM</label>
+						<select #game_amORpm class="form-control" id="amORpm" name="amORpm" [(ngModel)]="amORpm" required>
+							<option></option>
+							<option *ngFor="let aOp of ['AM', 'PM']" [ngValue]="amORpm">{{aOp}}</option>
+						</select>
+					</div>
+					<div class="col-md-3">
+						<button type="submit" class="btn btn-primary btn-block" >Create Account</button>
+					</div>
+			  	</div>
+			</form>
+		</div>
+	</div>
+</div>

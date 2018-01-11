@@ -1,0 +1,24 @@
+<div class="locationBrowser mt-4 mb-4">
+
+	<span class="title">Locations</span>
+	<button type="button" class="btn btn-outline-dark float-right" (click)="openSubmitLocationPage()">REQUEST LOCATION</button>
+	<hr class="clearfix"/>
+	<div *ngFor="let loc of locations">
+		<div class="card w-100">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-md-2">
+						<img [src]="loc.picture_url ? loc.picture_url : 'https://x.kinja-static.com/assets/images/logos/placeholders/default.png'" alt="Location Image">
+					</div>
+					<div class="col-md-10">
+						<span>{{loc.description}}</span>
+						<button type="button" class="btn btn-info float-right" (click)="goToLocation(loc.locationID)">View Location</button>
+						<div class="text-muted">{{loc.address}}</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

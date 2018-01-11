@@ -1,0 +1,61 @@
+<div class="container-fluid" *ngIf="user != null" id="userPublic">
+	<div class="card mt-3">
+		<div class="card-block">
+			<div class="row">
+				<div class="col-md-4">
+					<img class="img-fluid" [src]="(user.pic_url ? user.pic_url : 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png')" alt="my beautiful face">
+				</div>
+				<div class="col-md-8">
+					<h3 class="mt-3 lead username">{{user.username + '  (' + user.first_name + ' ' + user.last_name + ')'}}</h3>
+					<rating [ratingValue]="user.rating ? user.rating : 1"></rating>
+					<hr class="mr-3"/>
+					<p class="mr-3">Average User Rating: {{(user.rating ? user.rating + ' / 5' : 'N/A')}}</p>
+					<p class="mr-3">Year: {{user.year ? user.year : 'N/A'}}</p>
+					<p class="mr-3">Rank: {{user.ranking ? user.ranking : 'N/A'}}</p>
+					<p class="mr-3">Games Played: {{user.num_of_games_played}}</p>
+					<p class="mr-3">Wins/Losses: {{(user.wins ? user.wins : 0) + ' / ' + (user.losses ? user.losses : 0)}}</p>
+					<p class="mr-3">Email: {{user.email}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card mt-3">
+				<div class="card-header">
+					<rating [ratingValue]="0" (onRated)="onRated($event)"></rating>
+					<p class="mt-2 float-right" *ngIf="!hasRated">If you would like to comment, please rate this user first</p>
+				</div>
+				<div class="card-body" *ngIf="hasRated && !hasCommented">
+					<div class="form-group">
+						<label for="commentInput">Comment</label>
+						<textarea class="form-control" id="commentInput" rows="3" required [(ngModel)]="newComment.Comment"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary" (click)="addComment()">
+						Submit
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12" *ngIf="comments != null">
+			<div class="card mt-3 mb-3" id="comment-section">
+				<div class="card-header" id="commentHeader" (click)="displayComments=!displayComments">
+					<p class="text-center comments-indicator">Comments ({{comments.length}})</p>
+					<p class="text-center arrow-down"></p>
+				</div>
+
+				<div class="card-body pb-3" id="noCommentsDialog" *ngIf="comments.length < 1">
+					<p>Be the first to write a comment!</p>
+				</div>
+
+				<div class="card-body pb-3" id="CommentList">
+					<div *ngFor="let com of comments">
+						<comment-block [comment]="com"></comment-block>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

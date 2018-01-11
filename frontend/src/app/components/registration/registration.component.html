@@ -1,0 +1,46 @@
+<div class="registration-page">
+  <div class="container jumbotron text-center">
+    <h1 class="display-3">hooplife</h1>
+  </div>
+
+  <div class="container registration text-center mt-5">
+    <form #registrationForm="ngForm" class="text-center mb-3" (ngSubmit)="submit()">
+      <div class="form-row">
+        <span class="col">
+          <input #firstName class="form-control" id="first-name" name="firstName" [(ngModel)]="tempUser.first_name" placeholder="First Name" required>
+        </span>
+        <span class="col">
+          <input #lastName class="form-control" id="last-name" name="lastName" [(ngModel)]="tempUser.last_name" placeholder="Last Name" required>
+        </span>
+        <span class="col">
+          <select #year class="form-control" id="grade-year" name="year" [(ngModel)]="tempUser.year" required>
+            <option value="" [disabled]="true" [selected]="true">Select Your Year</option>
+            <option *ngFor="let yr of ['Freshman','Sophomore','Junior','Senior','Grad Student','Alumni']" [ngValue]="yr">{{yr}}</option>
+          </select>
+        </span>
+      </div>
+      <div class="form-row mt-3">
+        <span class="col">
+          <input #username class="form-control" id="username" name="username" [(ngModel)]="tempUser.username" placeholder="Username" required>
+        </span>
+      </div>
+      <div class="form-row mt-3">
+        <span class="col">
+          <input #email class="form-control" type="email" id="email" name="email" [(ngModel)]="tempUser.email" placeholder="Email" required>
+        </span>
+      </div>
+      <div class="form-row mt-3">
+        <span class="col">
+          <input #password class="form-control" type="password" id="password" name="password" [(ngModel)]="pass"  placeholder="Password" required>
+        </span>
+      </div>
+      <div class="form-row mt-3">
+        <span class="col">
+          <input #confirmPassword class="form-control" type="password" id="confirm-password" name="confirmPassword" [(ngModel)]="passConfirmation" placeholder="Confirm Password" required>
+        </span>
+      </div>
+      <button type="submit" class="btn mt-3" [disabled]="!registrationForm.form.valid">Create Account</button>
+    </form>
+    <a class="mt-5" routerLink="/login">Have an account already? Login</a>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="game-component mt-4" *ngIf="game != null">
+	<div class="row">
+		<div class="col-md-4">
+			<!-- Location Card -->
+			<div class="card" *ngIf="location != null">
+				<img class="card-img-top" src="{{location.picture_url ? location.picture_url : 'https://x.kinja-static.com/assets/images/logos/placeholders/default.png'}}" alt="Location image">
+				<div class="card-body text-centered">
+					<a [routerLink]="'/dashboard/location/' + location.locationID"><h3>{{location.address}}</h3></a>
+					<rating [ratingValue]="5"></rating>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<!-- Game Info -->
+			<span>
+				<h2>{{game.description}}</h2>
+				<span *ngIf="player">
+					<button type="button" class="btn btn-info" (click)="handlePlayer()">In the roster! (Click to remove yourself)</button>
+				</span>
+				<span *ngIf="!player">
+					<button type="button" class="btn btn-info" (click)="handlePlayer()">Click to register to this game!</button>
+				</span>
+			</span>
+			<div class="mt-3">Minimum Rating: <rating [ratingValue]="game.minimum_rank ? game.minimum_rank : 1"></rating></div>
+			<hr />
+			<p>Date and Time: {{game.date_of_game}}</p>
+			<p>Number of Players: {{players ? players.length : 0}}</p>
+			<button type="button" class="btn btn-info" data-toggle="modal" data-target="#players-modal">View Players</button>
+		</div>
+	</div>
+	<div class="modal fade" id="players-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">List of Players</h5>
+					<button type="button" class="close" data-dismiss="modal">
+						<span>&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" *ngIf="players != null">
+					<div class="player-list" *ngIf="players.length > 0">
+						<div class="players" *ngFor="let player of players">
+							<div class="card w-100" (click)="visitPlayer(player.id)">
+								<div class="card-body">
+									<a data-dismiss="modal" [routerLink]="'/dashboard/user/' + player.username">{{player.username}}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card mt-3">
+				<div class="card-body">
+					<div class="form-group">
+						<label for="commentInput">Comment</label>
+						<textarea class="form-control" id="commentInput" rows="3" required [(ngModel)]="newComment.Comment"></textarea>
+					</div>
+					<button type="submit" class="btn btn-info" (click)="addComment()">
+						Submit
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="comments != null">
+		<div class="col-md-12">
+			<!-- Comments -->
+			<div class="card mt-3 mb-3" id="comment-section">
+				<div class="card-header" id="commentHeader" (click)="displayComments=!displayComments">
+					<p class="text-center comments-indicator">Comments ({{comments.length}})</p>
+					<p class="text-center arrow-down"></p>
+				</div>
+
+				<div class="card-body pb-3" id="noCommentsDialog" *ngIf="comments.length < 1">
+					<p>Be the first to write a comment!</p>
+				</div>
+
+				<div class="card-body pb-3" id="CommentList" *ngIf="displayComments">
+					<div *ngFor="let com of comments">
+						<comment-block [comment]="com" [showRating]="false"></comment-block>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

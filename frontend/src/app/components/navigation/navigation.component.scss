@@ -1,0 +1,23 @@
+.navbar {
+  background-color: #494949;
+  margin: 0;
+}
+
+.navbar-brand {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+}
+
+.nav-link, button {
+  font-size: 1rem;
+  font-weight: 300;
+  color: white;
+  padding: 0;
+}
+
+button {
+  border: none;
+  padding: .625rem;
+}

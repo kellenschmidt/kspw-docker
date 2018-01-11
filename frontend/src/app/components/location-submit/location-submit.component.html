@@ -1,0 +1,31 @@
+<div class="card LocationSubmitForm m-3">
+	<div class="card-block m-3">
+		<form #locForm="ngForm" class="text-center mb-3" (ngSubmit)="submit()">
+			<div class="row">
+				<div class="col-md-8">
+					<h2>Submit a Location Request</h2>
+					<hr />
+					<div class="form-group">
+						<label for="descriptionTA">Location Description</label>
+						<textarea class="form-control" id="descriptionTA" rows="8" name="description" [(ngModel)]="description" required></textarea>
+					</div>
+					<div class="form-group">
+						<label for="AddressTA">Location Address</label>
+						<textarea class="form-control" id="AddressTA" rows="3" name="address" [(ngModel)]="address" required></textarea>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<img class="img-fluid" src="http://via.placeholder.com/500x500">
+					<div class="form-group mt-3">
+						<label for="locationImgFile">Select a Picture for the Location</label>
+						<input type="file" class="form-control-file" id="locationIngFile" name="picture">
+					</div>
+					<div class="buttons mt-3">
+						<button type="submit" class="btn btn-primary">Submit Request</button>
+						<button type="button" class="btn btn-secondary float-right" (click)="cancel()">Cancel Submission</button>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

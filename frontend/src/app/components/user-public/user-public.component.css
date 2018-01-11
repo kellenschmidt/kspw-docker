@@ -1,0 +1,16 @@
+#commentHeader:hover {
+	background-color: lightgrey;
+}
+
+.arrow-down {
+	margin-bottom: 0px;
+}
+
+.arrow-down:before {
+	font-family: FontAwesome;
+	content: '\f063';
+}
+
+.comments-indicator {
+	margin-bottom: 0px;
+}

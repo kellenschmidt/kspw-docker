@@ -1,0 +1,30 @@
+<div class="rating-component">
+	<fieldset class="rating" *ngIf="clickStars">
+		<ng-container *ngFor="let num of [5, 4, 3, 2, 1]">
+			<!-- full star -->
+			<input (click)="rated(num)"
+				[id]="'star'+num"
+				[value]="num"
+				name="rating"
+				type="radio">
+
+			<label class="full" [for]="'star'+num"></label>
+
+			<!-- half star -->
+			<input (click)="rated(num-0.5)"
+				[id]="'halfstar'+num"
+				[value]="num-0.5"
+				name="rating"
+				type="radio">
+
+			<label class="half" [for]="'halfstar'+num"></label>
+		</ng-container>
+	</fieldset>
+	<div *ngIf="!clickStars">
+		<ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+			<span *ngIf="star <= stars"><span class="st full-r"></span></span>
+			<span *ngIf="star - stars == 0.5"><span class="st half-r"></span><span class="st empty-r"></span></span>
+			<span *ngIf="star - stars >= 1"><span class="st empty-r"></span></span>
+		</ng-container>
+	</div>
+</div>

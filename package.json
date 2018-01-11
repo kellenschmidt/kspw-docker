@@ -1,0 +1,24 @@
+{
+  "name": "hooplife",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "config": {
+    "docker_file": "./config/dev/docker-compose.yml",
+    "docker_file_prod": "./config/prod/docker-compose.yml"
+  },
+  "scripts": {
+    "setup": "cd backend && mkdir logs && touch logs/app.log && mkdir logs/apache2 && cd logs/apache2 && touch error.log && touch access.log",
+    "docker-start": "bash ./bin/up.sh $npm_package_config_docker_file",
+    "docker-stop": "bash ./bin/stop.sh $npm_package_config_docker_file",
+    "docker-prod": "bash ./bin/prod.sh $npm_package_config_docker_file_prod",
+    "docker-stop-prod": "sudo docker-compose -f $npm_package_config_docker_file_prod stop",
+    "install-frontend": "cd frontend && npm install",
+    "install-backend": "cd backend && npm run install-composer && php ../composer.phar install",
+    "install": "npm run install-frontend && npm run install-backend",
+    "test-frontend": "cd frontend && npm run test-ci",
+    "test-backend": "cd backend && vendor/bin/phpunit tests",
+    "test": "npm run test-frontend && npm run test-backend",
+    "install-composer": "sh bin/install_composer.sh"
+  }
+}

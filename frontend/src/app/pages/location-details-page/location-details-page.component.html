@@ -1,0 +1,57 @@
+<div class="container-fluid" id="locationDetails" *ngIf="place != null">
+	<div class="card mt-3">
+		<div class="card-block">
+			<div class="row">
+				<div class="col-md-4">
+					<img [src]="place.picture_url ? place.picture_url : 'https://x.kinja-static.com/assets/images/logos/placeholders/default.png'" alt="{{place.description}}" class="img-fluid">
+				</div>
+				<div class="col-md-8">
+					<h3 class="mt-3 lead loc-name">{{place.description}}</h3>
+					<rating [ratingValue]="place.rating ? place.rating : '0'"></rating>
+					<hr class="mr-3"/>
+					<p class="mr-3">Average User Rating: {{place.rating}} / 5</p>
+					<p class="mr-3">Address: {{place.address}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="card mt-3">
+				<div class="card-header">
+					<rating [ratingValue]="0" (onRated)="onRated($event)"></rating>
+					<p class="mt-2 float-right" *ngIf="!hasRated">If you would like to comment, please rate this location first</p>
+				</div>
+				<div class="card-body" *ngIf="hasRated && !hasCommented">
+					<div class="form-group">
+						<label for="commentInput">Comment</label>
+						<textarea class="form-control" id="commentInput" rows="3" required [(ngModel)]="newComment.Comment"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary" (click)="addComment()">
+						Submit
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row" *ngIf="comments != null">
+		<div class="col-md-12">
+			<div class="card mt-3 mb-3" id="comment-section">
+				<div class="card-header" id="commentHeader" (click)="displayComments=!displayComments">
+					<p class="text-center comments-indicator">Comments ({{comments.length}})</p>
+					<p class="text-center arrow-down"></p>
+				</div>
+
+				<div class="card-body pb-3" id="noCommentsDialog" *ngIf="comments.length < 1">
+					<p>Be the first to write a comment!</p>
+				</div>
+
+				<div class="card-body pb-3" id="CommentList" *ngIf="displayComments">
+					<div *ngFor="let com of comments">
+						<comment-block [comment]="com"></comment-block>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

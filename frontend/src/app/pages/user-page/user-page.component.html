@@ -1,0 +1,13 @@
+<div class="userPage">
+	<div [hidden]="userFound">
+		<div class="jumbotron mt-4">
+			<h2 class="display-4">Oops, we couldn't find this user.</h2>
+		</div>
+	</div>
+	<div [hidden]="!userFound || !isPublic">
+		<app-user-public [user]="user" [comments]="comments"></app-user-public>
+	</div>
+	<div [hidden]="!userFound || isPublic">
+		<app-user-private [user]="user" [comments]="comments"></app-user-private>
+	</div>
+</div>
