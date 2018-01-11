@@ -10,7 +10,7 @@ services:
     links:
       - endlist-db
     volumes:
-      - ./endlist-web/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      # - ./endlist-web/httpd.conf:/usr/local/apache2/conf/httpd.conf
       - ../../backend/logs/apache2/error.log:/var/log/apache2/error.log
       - ../../backend/logs/apache2/access.log:/var/log/apache2/access.log
       - ../../backend/logs/app.log:/var/log/apache2/app.log

@@ -8,14 +8,16 @@ Instructions for running the project locally
 
 ### Setup
 
-Install dependencies, build frontend project, and get project ready for the docker containers
+Prepare for takeoff🚀
 
+With old code
+```
+npm run setup
+```
+
+With my code
 ```
 npm install
-cd frontend
-ng build --prod
-cd ../
-npm run setup
 ```
 
 ### Docker Scripts
