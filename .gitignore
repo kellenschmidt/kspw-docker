@@ -7,10 +7,9 @@ frontend/dist
 frontend/*.sketch
 
 # Backend Stuff
-backend/vendor/
-backend/logs/*
-backend/logs/README.md
 backend/db/
 
 **/.DS_Store
 **/vendor
+**/logs
+**/*.com/

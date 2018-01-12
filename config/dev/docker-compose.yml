@@ -1,25 +1,27 @@
 version: '3'
 
 services:
-  endlist-web:
-    build: ./endlist-web
-    image: endlist_web
+  kspw-web:
+    build: ./kspw-web
+    image: kspw_web
     stdin_open: true
     ports:
       - 80:80
     links:
-      - endlist-db
+      - kspw-db
     volumes:
-      # - ./endlist-web/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./kspw-web/000-default.conf:/etc/apache2/sites-available/000-default.conf
+      # - ./kspw-web/apache2.conf:/etc/apache2/apache2.conf
       - ../../backend/logs/apache2/error.log:/var/log/apache2/error.log
       - ../../backend/logs/apache2/access.log:/var/log/apache2/access.log
       - ../../backend/logs/app.log:/var/log/apache2/app.log
-      - ../../frontend/dist:/var/www/html
-      - ../../backend:/var/www/html/backend
+      # - ../../frontend/dist:/var/www/html
+      - ../../frontend/kellenschmidt.com/public:/var/www/kellenschmidt.com/public
+      - ../../backend:/var/www/api.kellenschmidt.com
     networks:
       - default
 
-  endlist-db:
+  kspw-db:
     image: mysql:5.7
     ports:
       - 3306:3306
@@ -28,4 +30,4 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: hooplive
-      SESSION_PASS: I_want_an_A
+      # SESSION_PASS: I_want_an_A
