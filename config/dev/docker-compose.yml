@@ -10,14 +10,13 @@ services:
     links:
       - kspw-db
     volumes:
-      - ./kspw-web/000-default.conf:/etc/apache2/sites-available/000-default.conf
-      # - ./kspw-web/apache2.conf:/etc/apache2/apache2.conf
-      - ../../backend/logs/apache2/error.log:/var/log/apache2/error.log
-      - ../../backend/logs/apache2/access.log:/var/log/apache2/access.log
-      - ../../backend/logs/app.log:/var/log/apache2/app.log
-      # - ../../frontend/dist:/var/www/html
-      - ../../frontend/kellenschmidt.com/public:/var/www/kellenschmidt.com/public
-      - ../../backend:/var/www/api.kellenschmidt.com
+      # - ../../backend/logs/apache2/error.log:/var/log/apache2/error.log
+      # - ../../backend/logs/apache2/access.log:/var/log/apache2/access.log
+      # - ../../backend/logs/app.log:/var/log/apache2/app.log
+      - ../../kellenschmidt.com/public:/var/www/kellenschmidt.com/public
+      - ../../api.kellenschmidt.com:/var/www/api.kellenschmidt.com
+      - ../../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
+      - ../../kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
     networks:
       - default
 
@@ -25,9 +24,15 @@ services:
     image: mysql:5.7
     ports:
       - 3306:3306
-    volumes:
-      - ../../backend/db:/var/lib/mysql
+    # volumes:
+      # - ../../backend/db:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: hooplive
-      # SESSION_PASS: I_want_an_A
+      MYSQL_DATABASE: personal_website
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    links: 
+        - kspw-db:db
+    ports:
+        - 8000:80
