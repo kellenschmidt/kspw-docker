@@ -4,35 +4,34 @@ services:
   kspw-web:
     build: ./kspw-web
     image: kspw_web
-    stdin_open: true
     ports:
       - 80:80
     links:
       - kspw-db
     volumes:
-      # - ../../backend/logs/apache2/error.log:/var/log/apache2/error.log
-      # - ../../backend/logs/apache2/access.log:/var/log/apache2/access.log
-      # - ../../backend/logs/app.log:/var/log/apache2/app.log
       - ../../kellenschmidt.com/public:/var/www/kellenschmidt.com/public
       - ../../api.kellenschmidt.com:/var/www/api.kellenschmidt.com
       - ../../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
       - ../../kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
-    networks:
-      - default
+    container_name: kspw-web
 
   kspw-db:
     image: mysql:5.7
     ports:
       - 3306:3306
-    # volumes:
-      # - ../../backend/db:/var/lib/mysql
+    volumes:
+      - ../../database/data:/var/lib/mysql
+      # - ../../database/schema_only:/docker-entrypoint-initdb.d
+      - ../../database/schema_with_data:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: pass
       MYSQL_DATABASE: personal_website
+    container_name: kspw-db
 
-  phpmyadmin:
+  kspw-pma:
     image: phpmyadmin/phpmyadmin
     links: 
         - kspw-db:db
     ports:
         - 8000:80
+    container_name: kspw-pma

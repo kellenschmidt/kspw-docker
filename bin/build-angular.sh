@@ -1,6 +1,5 @@
 #!/bin/sh
 
-cd frontend/
 git clone https://github.com/kellenschmidt/kellenschmidt.com.git
 cd kellenschmidt.com
 npm install
