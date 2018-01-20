@@ -13,6 +13,8 @@ services:
       - ../../api.kellenschmidt.com:/var/www/api.kellenschmidt.com
       - ../../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
       - ../../kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
+    environment:
+      - ENVIRONMENT
     container_name: kspw-web
 
   kspw-db:
@@ -24,9 +26,11 @@ services:
       # - ../../database/schema_only:/docker-entrypoint-initdb.d
       - ../../database/schema_with_data:/docker-entrypoint-initdb.d
     environment:
-      MYSQL_ROOT_PASSWORD: pass
-      MYSQL_DATABASE: personal_website
-    container_name: kspw-db
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+    container_name: kspw-db    
 
   kspw-pma:
     image: phpmyadmin/phpmyadmin

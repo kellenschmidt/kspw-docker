@@ -1,6 +1,6 @@
 # KSPW-Docker
 
-In progress Docker containerization of my personal website, kellenschmidt.com 
+In progress Docker containerization of my personal website, kellenschmidt.com
 
 ## Dev Environment
 
@@ -26,7 +26,7 @@ More instructions to come...
 
 ### Docker Scripts
 
-These commands are to be run in the top level 'endlist' folder. Docker and docker-compose must be installed for this to work
+These commands are to be run in the top level 'kspw-docker' folder. Docker and docker-compose must be installed for this to work
 
 `npm run docker-start`: Starts the docker containers. The frontend can be accessed from http://kspw. The backend can be accessed from http://api.kspw.
 
@@ -43,3 +43,7 @@ Not yet implemented
 `npm run test-frontend`: Runs tests for the frontend using jest.
 
 `npm run test-backend`: Runs tests for the backend using phpunit.
+
+### Notes
+
+To get MySQL root password `docker logs kspw-db 2>&1 | grep GENERATED`

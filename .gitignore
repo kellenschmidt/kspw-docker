@@ -4,3 +4,4 @@ node_modules
 database/data
 database/schema_with_data
 **/*.com/
+**/*.env
