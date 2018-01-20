@@ -1,0 +1,5 @@
+
+# Apache environment variables
+SetEnv MYSQL_PASS 49Cr2NS^R7FU%eMr
+SetEnv JWT_SECRET 2r$mCyfL5RKvIv38%bQss3FOxqhBpPw$cazBudPA4AM3XCnS$QvB#6eij$Fsx5ABFRE8YsnJBdi&j%rHCH10T%B*H6BwoRle@h@L
+SetEnv RECAPTCHA_SECRET 6Ld8USwUAAAAAGwAo-lN2YMFk3lQIyhqOuwXLuuF

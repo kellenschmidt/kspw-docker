@@ -1,5 +1,5 @@
 {
-  "name": "hooplife",
+  "name": "kspw-docker",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
@@ -8,17 +8,15 @@
     "docker_file_prod": "./config/prod/docker-compose.yml"
   },
   "scripts": {
-    "install-frontend": "sh bin/build-angular.sh",
-    "install-backend": "sh bin/download-backend.sh",
-    "setup": "cd backend && mkdir logs && touch logs/app.log && mkdir logs/apache2 && cd logs/apache2 && touch error.log && touch access.log",
+    "install": "npm run install-frontend && npm run install-backend",
+    "install-frontend": "sh bin/build-frontend.sh",
+    "install-backend": "sh bin/build-backend.sh",
     "docker-start": "bash ./bin/up.sh $npm_package_config_docker_file",
     "docker-stop": "bash ./bin/stop.sh $npm_package_config_docker_file",
     "docker-prod": "bash ./bin/prod.sh $npm_package_config_docker_file_prod",
     "docker-stop-prod": "sudo docker-compose -f $npm_package_config_docker_file_prod stop",
-    "install": "npm run install-frontend && npm run install-backend",
-    "test-frontend": "cd frontend && npm run test-ci",
-    "test-backend": "cd backend && vendor/bin/phpunit tests",
     "test": "npm run test-frontend && npm run test-backend",
-    "install-composer": "sh bin/install_composer.sh"
+    "test-frontend": "cd frontend && npm run test-ci",
+    "test-backend": "cd backend && vendor/bin/phpunit tests"
   }
 }
