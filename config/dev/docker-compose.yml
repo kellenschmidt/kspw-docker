@@ -12,9 +12,8 @@ services:
       - ../../kellenschmidt.com/public:/var/www/kellenschmidt.com/public
       - ../../api.kellenschmidt.com:/var/www/api.kellenschmidt.com
       - ../../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
-      - ../../kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
-    environment:
-      - ENVIRONMENT
+      - ../../test.kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
+      - ../../testapi.kellenschmidt.com:/var/www/testapi.kellenschmidt.com
     container_name: kspw-web
 
   kspw-db:

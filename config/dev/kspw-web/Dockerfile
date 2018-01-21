@@ -26,11 +26,16 @@ RUN \
     mkdir /var/www/test.kellenschmidt.com && \
     mkdir /var/www/test.kellenschmidt.com/public && \
     mkdir /var/log/apache2/test.kellenschmidt.com && \
+# testapi.kellenschmidt.com
+    mkdir /var/www/testapi.kellenschmidt.com && \
+    mkdir /var/www/testapi.kellenschmidt.com/public && \
+    mkdir /var/log/apache2/testapi.kellenschmidt.com && \
 # other
     chmod -R 755 /var/www/
 
 RUN a2ensite kellenschmidt.com && \
     a2ensite api.kellenschmidt.com && \
     a2ensite urlshortenerphp.kellenschmidt.com && \
-    a2ensite test.kellenschmidt.com
+    a2ensite test.kellenschmidt.com && \
+    a2ensite testapi.kellenschmidt.com
 RUN service apache2 restart

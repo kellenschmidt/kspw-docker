@@ -8,15 +8,11 @@
     "docker_file_prod": "./config/prod/docker-compose.yml"
   },
   "scripts": {
-    "install": "npm run install-frontend && npm run install-backend",
-    "install-frontend": "sh bin/build-frontend.sh",
-    "install-backend": "sh bin/build-backend.sh",
-    "docker-start": "bash ./bin/up.sh $npm_package_config_docker_file",
-    "docker-stop": "bash ./bin/stop.sh $npm_package_config_docker_file",
-    "docker-prod": "bash ./bin/prod.sh $npm_package_config_docker_file_prod",
-    "docker-stop-prod": "sudo docker-compose -f $npm_package_config_docker_file_prod stop",
-    "test": "npm run test-frontend && npm run test-backend",
-    "test-frontend": "cd frontend && npm run test-ci",
-    "test-backend": "cd backend && vendor/bin/phpunit tests"
+    "install": "sh bin/install-frontend.sh docker && sh bin/install-backend.sh",
+    "install-backend": "sh bin/install-backend.sh test",
+    "docker-start": "bash ./bin/start.sh $npm_package_config_docker_file",
+    "docker-deploy-test": "sh bin/install-frontend.sh test && bash ./bin/start.sh $npm_package_config_docker_file",
+    "docker-deploy-prod": "sh bin/install-frontend.sh prod && bash ./bin/start.sh $npm_package_config_docker_file",
+    "docker-stop": "bash ./bin/stop.sh $npm_package_config_docker_file"
   }
 }
