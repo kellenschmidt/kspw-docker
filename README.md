@@ -2,37 +2,27 @@
 
 In progress Docker containerization of my personal website, kellenschmidt.com
 
-## Dev Environment
+## Local Development
 
-Instructions for running the project locally
-
-### Setup
-
-Prepare for takeoff🚀
-
-```
-npm install
-
-More instructions to come...
-```
+Instructions for running the project locally. These commands are to be run in the top level 'kspw-docker' folder. Docker and docker-compose must be installed for this to work
 
 Edit hosts file
+*`sudo nano /etc/hosts`
+*Add `127.0.0.1 kspw api.kspw test.kspw testapi.kspw urlshortenerphp.kspw` on a new line at the end of the file
 
+Start Docker containers
 ```
-sudo nano /etc/hosts
-
-More instructions to come...
+npm install
+npm run docker-start
 ```
 
-### Docker Scripts
+## Other Docker Scripts
 
-These commands are to be run in the top level 'kspw-docker' folder. Docker and docker-compose must be installed for this to work
+`npm run docker-stop`: Stops and removes the docker containers.
 
-`npm run docker-start`: Starts the docker containers. The frontend can be accessed from http://kspw. The backend can be accessed from http://api.kspw.
+`npm run docker-deploy-prod`: Starts the Docker containers and installs code for production. The frontend can be accessed from http://kellenschmidt.com. The backend can be accessed from http://api.kellenschmidt.com.
 
-`npm run docker-stop`: Stops the docker containers.
-
-`npm run docker-prod`: Starts the docker containers in production mode. The frontend is configured to be accessed from `TBD` and the backend from `TBD`
+`npm run docker-deploy-test`: Starts the Docker containers and installs code for testing. The frontend can be accessed from http://test.kellenschmidt.com. The backend can be accessed from http://testapi.kellenschmidt.com.
 
 ### Testing
 
@@ -44,6 +34,6 @@ Not yet implemented
 
 `npm run test-backend`: Runs tests for the backend using phpunit.
 
-### Notes
+### General Notes
 
 To get MySQL root password `docker logs kspw-db 2>&1 | grep GENERATED`

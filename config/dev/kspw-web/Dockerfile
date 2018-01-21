@@ -6,8 +6,6 @@ RUN docker-php-ext-install pdo pdo_mysql gd curl mysqli
 
 RUN a2enmod rewrite
 ADD ./sites-available /etc/apache2/sites-available
-ADD apache_env_vars.txt /home
-RUN cat /home/apache_env_vars.txt >> /etc/apache2/apache2.conf
 
 RUN \
 # kellenschmidt.com
