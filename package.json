@@ -4,8 +4,7 @@
   "private": true,
   "license": "MIT",
   "config": {
-    "docker_file": "./config/dev/docker-compose.yml",
-    "docker_file_prod": "./config/prod/docker-compose.yml"
+    "docker_file": "./config/docker-compose.yml"
   },
   "scripts": {
     "install": "sh bin/install.sh docker",
