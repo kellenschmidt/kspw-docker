@@ -7,8 +7,8 @@ In progress Docker containerization of my personal website, kellenschmidt.com
 Instructions for running the project locally. These commands are to be run in the top level 'kspw-docker' folder. Docker and docker-compose must be installed for this to work
 
 Edit hosts file
-*`sudo nano /etc/hosts`
-*Add `127.0.0.1 kspw api.kspw test.kspw testapi.kspw urlshortenerphp.kspw` on a new line at the end of the file
+* `sudo nano /etc/hosts`
+* Add `127.0.0.1 kspw api.kspw test.kspw testapi.kspw urlshortenerphp.kspw` on a new line at the end of the file
 
 Start Docker containers
 ```

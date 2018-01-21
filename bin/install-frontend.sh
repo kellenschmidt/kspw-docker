@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Download and install kellenschmidt.com code
 if [ "$1" == "test" ]
 then
 	folder="test.kellenschmidt.com"
@@ -15,3 +16,8 @@ if [ "$1" != "prod" ]; then
 fi
 npm install
 ng build --prod-aot=false --env=$1
+
+# Download and install urlshortenerphp.kellenschmidt.com code
+rm -rf urlshortenerphp.kellenschmidt.com
+git clone https://github.com/kellenschmidt/urlshortenerphp.kellenschmidt.com.git
+cd urlshortenerphp.kellenschmidt.com
