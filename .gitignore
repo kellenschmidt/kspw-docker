@@ -1,6 +1,7 @@
 node_modules
 **/.DS_Store
 
+database/backups
 database/data
 database/schema_with_data
 **/*.com/

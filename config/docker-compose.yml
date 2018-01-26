@@ -30,6 +30,7 @@ services:
       - ../database/data:/var/lib/mysql
       # - ../database/schema_only:/docker-entrypoint-initdb.d
       - ../database/schema_with_data:/docker-entrypoint-initdb.d
+      - ../bin/backup_db.sh:/home/backup_db.sh
     environment:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_USER

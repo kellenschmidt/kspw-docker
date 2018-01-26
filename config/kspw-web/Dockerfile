@@ -1,6 +1,6 @@
 FROM php:7-apache
 
-RUN apt-get update -y && apt-get install -y libpng-dev curl git libcurl4-openssl-dev nodejs
+RUN apt-get update -y && apt-get install -y libpng-dev curl git libcurl4-openssl-dev nodejs mysql-client
 
 RUN docker-php-ext-install pdo pdo_mysql gd curl mysqli
 
