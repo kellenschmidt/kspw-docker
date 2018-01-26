@@ -15,3 +15,5 @@ if [ "$1" != "prod" ]; then
 fi
 sh install_composer.sh
 php composer.phar install
+
+echo "ENV=$1" >> .env
