@@ -16,4 +16,4 @@ fi
 sh install_composer.sh
 php composer.phar install
 
-echo "ENV=$1" >> .env
+echo "ENV=$1" >> ../.env

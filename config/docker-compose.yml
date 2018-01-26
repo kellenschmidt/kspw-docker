@@ -19,6 +19,7 @@ services:
       - MYSQL_PASSWORD
       - JWT_SECRET
       - RECAPTCHA_SECRET
+      - ENV
     container_name: kspw-web
 
   kspw-db:
