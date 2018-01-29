@@ -1,4 +1,7 @@
-#!/bin/sh
+#!/bin/bash
+
+# Arguments
+# $1: Name of environment that is being deployed
 
 if [ "$1" == "test" ]
 then

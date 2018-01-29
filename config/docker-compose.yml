@@ -6,6 +6,7 @@ services:
     image: kspw_web
     ports:
       - 80:80
+      - 443:443
     links:
       - kspw-db
     volumes:
@@ -30,7 +31,7 @@ services:
       - ../database/data:/var/lib/mysql
       # - ../database/schema_only:/docker-entrypoint-initdb.d
       - ../database/schema_with_data:/docker-entrypoint-initdb.d
-      - ../bin/backup_db.sh:/home/backup_db.sh
+      - ./kspw-web/bin/:/home/bin
     environment:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_USER
@@ -40,7 +41,7 @@ services:
 
   kspw-pma:
     image: phpmyadmin/phpmyadmin
-    links: 
+    links:
         - kspw-db:db
     ports:
         - 8000:80
