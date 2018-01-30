@@ -15,6 +15,7 @@ services:
       - ../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
       - ../test.kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
       - ../testapi.kellenschmidt.com:/var/www/testapi.kellenschmidt.com
+      - ./kspw-web/bin:/home/bin
     environment:
       - MYSQL_USER
       - MYSQL_PASSWORD
@@ -31,7 +32,6 @@ services:
       - ../database/data:/var/lib/mysql
       # - ../database/schema_only:/docker-entrypoint-initdb.d
       - ../database/schema_with_data:/docker-entrypoint-initdb.d
-      - ./kspw-web/bin/:/home/bin
     environment:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_USER
