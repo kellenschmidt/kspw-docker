@@ -20,8 +20,8 @@ Edit hosts file
 
 Create environment variables file
 
-* `touch /.env`
-* Populate with the required variables listed below
+* `touch kspw-docker/.env`
+* Populate with the required variables listed under "General Notes"
 
 Start Docker containers
 
@@ -33,7 +33,8 @@ npm run docker-start
 Optional: Preload database
 
 * Add SQL files to `/database/schema_with_data`
-* Confirm volume is attached(uncommented) in `config/docker-compose.yml`
+* Confirm volume is attached (uncommented) in `config/docker-compose.yml`
+* Restart Docker containers
 
 ## Other Docker Scripts
 
@@ -45,7 +46,7 @@ Optional: Preload database
 
 ## General Notes
 
-Environment variables file, `/.env`, is required. Required variables:
+Environment variables file, `.env`, is required. Required variables:
 
 `MYSQL_ROOT_PASSWORD`: Required (but ignored). Overwritten by Docker. Find new MySQL root password with `docker logs kspw-db 2>&1 | grep GENERATED`
 
