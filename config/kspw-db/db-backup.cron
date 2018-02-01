@@ -1,0 +1,10 @@
+# At every minute
+# * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
+
+# At every 3rd minute
+# */3 * * * * bash /home/cron/backup_db.sh >> /var/log/cron.log 2>&1
+
+# At 23:59 on every 3rd day-of-month
+23 59 */3 * * bash /home/cron/backup_db.sh >> /var/log/cron.log 2>&1
+
+#

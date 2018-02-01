@@ -3,7 +3,7 @@
 # Arguments
 # $1: Name of environment that is being deployed
 
-docker exec kspw-db bash /home/bin/backup_db.sh | gzip -9 > database/backups/mysql_backup.sql.gz
+docker exec kspw-db bash /home/cron/backup_db.sh
 
 docker-compose -f $1 stop
 docker rm kspw-web \
