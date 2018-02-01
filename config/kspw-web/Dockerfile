@@ -1,8 +1,8 @@
 FROM php:7-apache
 
-RUN apt-get update -y && apt-get install -y libpng-dev curl git libcurl4-openssl-dev nodejs mysql-client wget cron nano
+RUN apt-get update -y && apt-get install -y git nodejs mysql-client wget cron nano
 
-RUN docker-php-ext-install pdo pdo_mysql gd curl mysqli
+RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 RUN a2enmod rewrite
 ADD ./sites-available /etc/apache2/sites-available
@@ -28,8 +28,14 @@ RUN \
     mkdir /var/www/testapi.kellenschmidt.com && \
     mkdir /var/www/testapi.kellenschmidt.com/public && \
     mkdir /var/log/apache2/testapi.kellenschmidt.com && \
+# certbot
+    mkdir /var/www/html/.well-known && \
+    mkdir /var/www/html/.well-known/acme-challenge && \
 # other
-    chmod -R 755 /var/www/
+    chmod -R 755 /var/www/ && \
+    mkdir /home/bin
+
+ADD ./bin /home/bin
 
 # Run certbot conditionally based on environment 
 RUN bash -c "if [$ENV -eq \"prod\"]; \
