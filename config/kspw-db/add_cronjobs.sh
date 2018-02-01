@@ -7,7 +7,7 @@ apt-get update -y && apt-get install -y cron nano
 printenv >> /etc/environment
 
 # Add Cron commands to crontab
-crontab /home/cron/db-backup.cron
+crontab /home/cron/backup-db.cron
 
 # Start cron
 cron
