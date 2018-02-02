@@ -2,6 +2,16 @@
 
 In progress Docker containerization of my personal website, [kellenschmidt.com](https://kellenschmidt.com)
 
+## Features
+
+* Deploy the entire application with a single command
+* Deploy to local and remote environments
+* All environment variables encapsulated into single .env file
+* HTTPS encryption throughout website and API
+* Automatic hourly, daily, weekly, and monthly complete database backups
+* Automatic removal of old backups
+* Automatic daily uploading of backups to cloud storage
+
 ## Local Development
 
 Instructions for running the project locally. These commands are to be run in the top level 'kspw-docker' folder. Docker and docker-compose must be installed for this to work
@@ -57,6 +67,8 @@ Environment variables file, `.env`, is required. Required variables:
 `JWT_SECRET`: Required. Secret for JSON Web Token signatures.
 
 `RECAPTCHA_SECRET`: Unnecessary. For future use when ReCaptcha is implemented in login/signup forms.
+
+`OAUTH_ACCESS_TOKEN`: Optional. Dropbox access token for uploading database backups to cloud storage.
 
 `ENV`: Unnecessary. Set automatically by installation scripts. Options:
 
