@@ -15,7 +15,6 @@ services:
       - ../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
       - ../test.kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
       - ../testapi.kellenschmidt.com:/var/www/testapi.kellenschmidt.com
-      # - ./kspw-web/bin:/home/bin
     environment:
       - MYSQL_USER
       - MYSQL_PASSWORD
@@ -25,20 +24,22 @@ services:
     container_name: kspw-web
 
   kspw-db:
-    image: mysql:5.7
+    build: ./kspw-db
+    image: kspw_db
     ports:
       - 3306:3306
     volumes:
       - ../database/data:/var/lib/mysql
       # - ../database/schema_only:/docker-entrypoint-initdb.d
       - ../database/schema_with_data:/docker-entrypoint-initdb.d
-      - ./kspw-db:/home/cron
       - ../database/backups:/home/db-backups
+      - ../.env:/etc/environment
     environment:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_USER
       - MYSQL_PASSWORD
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - OAUTH_ACCESS_TOKEN
     container_name: kspw-db    
 
   kspw-pma:
