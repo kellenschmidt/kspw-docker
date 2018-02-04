@@ -4,6 +4,7 @@ services:
   kspw-web:
     build: ./kspw-web
     image: kspw_web
+    restart: unless-stopped
     ports:
       - 80:80
       - 443:443
@@ -26,6 +27,7 @@ services:
   kspw-db:
     build: ./kspw-db
     image: kspw_db
+    restart: unless-stopped
     ports:
       - 3306:3306
     volumes:
@@ -44,6 +46,7 @@ services:
 
   kspw-pma:
     image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
     links:
         - kspw-db:db
     ports:
