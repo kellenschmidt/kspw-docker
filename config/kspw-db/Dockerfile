@@ -17,5 +17,4 @@ RUN cat /etc/cron.d/upload-cloud.cron >> /etc/cron.d/combined.cron
 RUN crontab /etc/cron.d/combined.cron
 
 # Restart cron
-# RUN /etc/init.d/cron start >> /var/log/cron.start.log
-CMD cron -f
+# CMD cron -f
