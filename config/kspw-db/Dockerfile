@@ -15,6 +15,3 @@ RUN cat /etc/cron.d/upload-cloud.cron >> /etc/cron.d/combined.cron
 
 # Add Cron commands to crontab
 RUN crontab /etc/cron.d/combined.cron
-
-# Restart cron
-# CMD cron -f
