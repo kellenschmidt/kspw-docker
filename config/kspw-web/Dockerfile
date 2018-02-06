@@ -36,12 +36,17 @@ RUN \
     mkdir /home/bin
 
 ADD ./bin /home/bin
+ADD ./cron /etc/cron.d
 
-# Run certbot conditionally based on environment 
+# Run certbot and set cron command conditionally based on environment 
 RUN bash -c "if [$ENV -eq \"prod\"]; \
-    then bash /home/bin/run_certbot.sh kellenschmidt.com,api.kellenschmidt.com,urlshortenerphp.kellenschmidt.com; \
+    then \
+    bash /home/bin/run_certbot.sh kellenschmidt.com,api.kellenschmidt.com,urlshortenerphp.kellenschmidt.com; \
+    crontab /etc/cron.d/renew-certs.cron \
 elif [$ENV -eq \"test\"]; \
-    then bash /home/bin/run_certbot.sh test.kellenschmidt.com,testapi.kellenschmidt.com; \
+    then \
+    bash /home/bin/run_certbot.sh test.kellenschmidt.com,testapi.kellenschmidt.com; \
+    crontab /etc/cron.d/renew-certs.cron \
 fi"
 
 RUN a2ensite kellenschmidt.com && \
@@ -50,7 +55,3 @@ RUN a2ensite kellenschmidt.com && \
     a2ensite test.kellenschmidt.com && \
     a2ensite testapi.kellenschmidt.com
 RUN service apache2 restart
-
-# Add Cron commands to crontab
-ADD ./cron /etc/cron.d
-RUN crontab /etc/cron.d/renew-certs.cron
