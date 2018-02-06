@@ -50,3 +50,7 @@ RUN a2ensite kellenschmidt.com && \
     a2ensite test.kellenschmidt.com && \
     a2ensite testapi.kellenschmidt.com
 RUN service apache2 restart
+
+# Add Cron commands to crontab
+ADD ./cron /etc/cron.d
+RUN crontab /etc/cron.d/renew-certs.cron
