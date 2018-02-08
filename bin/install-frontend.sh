@@ -17,4 +17,4 @@ if [ "$1" != "prod" ]; then
     git checkout -b ongoing-dev origin/ongoing-dev
 fi
 npm install
-ng build --prod-aot=false --env=$1
+ng build --prod --env=$1
