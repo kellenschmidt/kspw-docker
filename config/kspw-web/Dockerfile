@@ -41,6 +41,9 @@ ADD ./cron /etc/cron.d
 # Run certbot and set cron command conditionally based on environment 
 RUN bash /home/bin/get_certs_set_crontab.sh
 
+# Set default ServerName (to remove warning)
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 RUN a2ensite kellenschmidt.com && \
     a2ensite api.kellenschmidt.com && \
     a2ensite urlshortenerphp.kellenschmidt.com && \
