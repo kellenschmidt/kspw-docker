@@ -23,6 +23,14 @@ Install prerequisites
 * `Node.js`: [Node.js Download](https://nodejs.org/en/download/)
 * `Angular CLI`: `npm i -g @angular/cli`
 
+Download project and install dependencies
+
+```Shell
+git clone https://github.com/kellenschmidt/kspw-docker.git
+cd kspw-docker
+npm install
+```
+
 Edit hosts file
 
 * `sudo nano /etc/hosts`
@@ -30,13 +38,12 @@ Edit hosts file
 
 Create environment variables file
 
-* `touch kspw-docker/.env`
+* `touch .env` in project root
 * Populate with the required variables listed under "General Notes"
 
 Start Docker containers
 
 ```Shell
-npm install
 npm run docker-start
 ```
 
