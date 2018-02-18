@@ -1,6 +1,6 @@
 # KSPW-Docker
 
-In progress Docker containerization of my personal website, [kellenschmidt.com](https://kellenschmidt.com)
+Docker containerization of [kellenschmidt.com](https://kellenschmidt.com)
 
 ## Features
 
@@ -8,13 +8,14 @@ In progress Docker containerization of my personal website, [kellenschmidt.com](
 * Deploy to local and remote environments
 * All environment variables encapsulated into single .env file
 * HTTPS encryption throughout website and API
+* Automatic renewal of HTTPS certificates
 * Automatic hourly, daily, weekly, and monthly complete database backups
 * Automatic removal of old backups
 * Automatic daily uploading of backups to cloud storage
 
 ## Local Development
 
-Instructions for running the project locally. These commands are to be run in the top level 'kspw-docker' folder. Docker and docker-compose must be installed for this to work
+Instructions for running the project locally. These commands are to be run in the top level 'kspw-docker' folder
 
 Install prerequisites
 
@@ -67,7 +68,7 @@ Environment variables file, `.env`, is required. Required variables:
 
 `MYSQL_ROOT_PASSWORD`: Required (but ignored). Overwritten by Docker. Find new MySQL root password with `docker logs kspw-db 2>&1 | grep GENERATED`
 
-`MYSQL_USER`: Required. Username of non-root MySQL user.
+`MYSQL_USER`: Required. Username of non-root MySQL user. Note: Must also edit `config/kspw-db/database/grant_permissions.sql`
 
 `MYSQL_PASSWORD`: Required. Password of non-root MySQL user.
 
@@ -84,3 +85,31 @@ Environment variables file, `.env`, is required. Required variables:
 | `prod`    | master        | production (*.com)      | Runs Certbot     |
 | `test`    | development   | production (test*.com)  | Runs Certbot     |
 | `docker`  | development   | development (*.kspw)    |                  |
+
+## AWS Deployment
+
+1. Launch Linux EC2 instance
+2. Create keypair for SSH
+3. Create and associate elastic IP address
+4. Configure security group to allow HTTP(80), HTTPS(443), and SSH(22), PhpMyAdmin(8080)
+5. Optionally add custom password-protected keypair
+
+After starting an Amazon Linux AWS EC2 instance, the following commands will update server settings and install the prerequisite dependencies to prepare for Docker
+
+```Shell
+sudo yum update -y
+sudo yum install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+sudo service docker restart
+sudo yum install git
+curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
+sudo yum -y install nodejs
+sudo chmod 777 /usr/lib/node_modules/
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+export PATH=~/.npm-global/bin:$PATH
+touch ~/.profile
+source ~/.profile
+npm i -g @angular/cli
+```
