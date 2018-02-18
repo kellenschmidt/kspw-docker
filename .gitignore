@@ -1,0 +1,8 @@
+node_modules
+**/.DS_Store
+
+config/kspw-db/database/backups
+config/kspw-db/database/initialize
+config/kspw-db/database/schema-with-data/*
+**/*.com/
+**/*.env

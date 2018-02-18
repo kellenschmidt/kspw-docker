@@ -1,0 +1,23 @@
+############################
+#    DB Backup Cronjobs    #
+############################
+
+# At every minute
+# * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
+
+# At every 2nd minute
+# */2 * * * * bash /home/bin/backup_db.sh test >> /var/log/cron.log 2>&1
+
+# Hourly every 49th minute
+49 * * * * bash /home/bin/backup_db.sh hourly >> /var/log/cron.log 2>&1
+
+# Daily at 23:50
+50 23 * * * bash /home/bin/backup_db.sh daily >> /var/log/cron.log 2>&1
+
+# Weekly on Sunday at 23:49
+49 23 * * 0 bash /home/bin/backup_db.sh weekly >> /var/log/cron.log 2>&1
+
+# Monthly on 1st at 23:49
+49 23 1 * * bash /home/bin/backup_db.sh monthly >> /var/log/cron.log 2>&1
+
+#
