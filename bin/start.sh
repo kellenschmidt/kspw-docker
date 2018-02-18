@@ -1,13 +1,14 @@
 #!/bin/bash
 
 # Arguments
-# $1: File path to Docker compose file relative to root package.json
-
-docker-compose -f $1 up -d --build --force-recreate
+# $1: Name of environment that is being deployed
 
 # Load database
-docker exec kspw-db bash /home/bin/restore_backup.sh
+bash bin/restore_backup.sh $1
 
-# Start cron
+# Start Docker
+docker-compose -f config/docker-compose.yml up -d --build --force-recreate
+
+# Start cron inside Docker
 docker exec kspw-db cron
 docker exec kspw-web cron

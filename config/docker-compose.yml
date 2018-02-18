@@ -33,6 +33,7 @@ services:
     volumes:
       - ../.env:/etc/environment
       - ./kspw-db/database/backups:/home/backups
+      - ./kspw-db/database/initialize:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD
       - MYSQL_USER
