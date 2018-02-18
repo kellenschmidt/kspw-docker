@@ -23,6 +23,7 @@ Install prerequisites
 * `Docker`: [Docker Download](https://store.docker.com/search?type=edition&offering=community)
 * `Git`: [Git Download](https://git-scm.com/downloads)
 * `Node.js`: [Node.js Download](https://nodejs.org/en/download/)
+* `PHP`: [PHP Download](http://php.net/downloads.php)
 * `Angular CLI`: `npm i -g @angular/cli`
 
 Download project and install dependencies
@@ -113,4 +114,8 @@ export PATH=~/.npm-global/bin:$PATH
 touch ~/.profile
 source ~/.profile
 npm i -g @angular/cli
+sudo yum remove httpd* php*
+sudo yum install php70
+sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 ```
