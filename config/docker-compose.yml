@@ -31,10 +31,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ../database/data:/var/lib/mysql
-      # - ../database/schema_only:/docker-entrypoint-initdb.d
-      - ../database/schema_with_data:/docker-entrypoint-initdb.d
-      - ../database/backups:/home/db-backups
+      - ../database/grant_permissions.sql /docker-entrypoint-initdb.d
       - ../.env:/etc/environment
     environment:
       - MYSQL_ROOT_PASSWORD
