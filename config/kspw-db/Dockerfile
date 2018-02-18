@@ -14,5 +14,3 @@ RUN cat /etc/cron.d/backup-db.cron > /etc/cron.d/combined.cron && \
     cat /etc/cron.d/remove-backups.cron >> /etc/cron.d/combined.cron && \
     cat /etc/cron.d/upload-cloud.cron >> /etc/cron.d/combined.cron && \
     crontab /etc/cron.d/combined.cron
-
-RUN bash /home/bin/restore_backup.sh

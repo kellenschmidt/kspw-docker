@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `url_shortener`
+-- Database: `personal_website`
 --
 CREATE DATABASE IF NOT EXISTS `personal_website` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `personal_website`;

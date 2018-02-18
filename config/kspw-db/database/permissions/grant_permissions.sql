@@ -1,0 +1,2 @@
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP ON personal_website.* TO 'kellen'@'%';
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,ALTER,DROP ON url_shortener_php.* TO 'kellen'@'%';
