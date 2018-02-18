@@ -50,9 +50,9 @@ npm run docker-start
 
 Optional: Preload database
 
-* Add SQL files to `/database/schema_with_data`
-* Confirm volume is attached (uncommented) in `config/docker-compose.yml`
-* Restart Docker containers
+* Latest backup (from matching environment) will automatically be restored if one exists
+* If not restoring from backup, add SQL files to `config/kspw-db/database/schema-with-data`
+* Otherwise, the empty schema will be loaded from `config/kspw-db/database/schema-only`
 
 ## Other Docker Scripts
 
