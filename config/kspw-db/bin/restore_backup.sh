@@ -12,8 +12,8 @@ if [ -f $backupFile ]; then
     gzip -dk < /home/backups/${newestBackup} > /docker-entrypoint-initdb.d/${newestBackup::-3}
 # Elif the schema-with-data directory has contents
 elif [ "$(ls -A /home/schema-with-data)" ]; then
-    cp /home/schema-with-data /docker-entrypoint-initdb.d
+    cp /home/schema-with-data/* /docker-entrypoint-initdb.d
 # Else copy schema without data to mysql init directory
 else
-    cp /home/schema /docker-entrypoint-initdb.d
+    cp /home/schema-only/* /docker-entrypoint-initdb.d
 fi
