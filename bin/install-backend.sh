@@ -19,6 +19,4 @@ fi
 sh install_composer.sh
 php composer.phar install
 
-mkdir config/kspw-db/database/backups config/kspw-db/database/schema-with-data
-
 echo "ENV=$1" >> ../.env

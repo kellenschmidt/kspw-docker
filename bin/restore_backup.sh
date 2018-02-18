@@ -6,7 +6,8 @@
 backupFile="config/kspw-db/database/backups/mysql-$1-*_*.sql.gz"
 newestBackup=$(ls -t ${backupFile} | head -1)
 
-mkdir config/kspw-db/database/initialize
+# Make directory for active sql files but also make empty directories
+mkdir config/kspw-db/database/initialize config/kspw-db/database/backups config/kspw-db/database/schema-with-data
 cp config/kspw-db/database/permissions/* config/kspw-db/database/initialize
 
 # If a valid backup file exists
