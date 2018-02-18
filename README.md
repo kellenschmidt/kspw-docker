@@ -11,6 +11,7 @@ Docker containerization of [kellenschmidt.com](https://kellenschmidt.com)
 * Automatic renewal of HTTPS certificates
 * Automatic hourly, daily, weekly, and monthly complete database backups
 * Automatic removal of old backups
+* Database automatically populated (from backup or file)
 * Automatic daily uploading of backups to cloud storage
 
 ## Local Development
@@ -48,7 +49,7 @@ Start Docker containers
 npm run docker-start
 ```
 
-Optional: Preload database
+Preload database
 
 * Latest backup (from matching environment) will automatically be restored if one exists
 * If not restoring from backup, add SQL files to `config/kspw-db/database/schema-with-data`

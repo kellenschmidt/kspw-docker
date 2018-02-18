@@ -4,7 +4,7 @@ RUN apt-get update -y && apt-get install -y cron nano wget curl
 
 ADD ./bin /home/bin
 ADD ./cron /etc/cron.d
-ADD ./database /home
+ADD ./database/backups /home/backups
 
 RUN wget https://raw.githubusercontent.com/andreafabrizi/Dropbox-Uploader/master/dropbox_uploader.sh -P /usr/bin && \
     chmod +x /usr/bin/dropbox_uploader.sh
