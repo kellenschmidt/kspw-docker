@@ -14,7 +14,16 @@ rm -rf $folder
 git clone https://github.com/kellenschmidt/kellenschmidt.com.git $folder
 cd $folder
 if [ "$1" != "prod" ]; then
-    git checkout -b ongoing-dev origin/ongoing-dev
+    git checkout -b dev origin/dev
 fi
+
 npm install
-ng build --prod --env=$1
+
+# Build frontend
+if [ "$1" != "docker" ]; then
+	# Increase max memory usage of process for server
+	node --max-old-space-size=768 ./node_modules/.bin/ng build --prod --env=$1
+else
+	# Normal build with regular memory size
+	ng build --prod --env=$1
+fi

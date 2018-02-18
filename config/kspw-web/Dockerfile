@@ -4,9 +4,6 @@ RUN apt-get update -y && apt-get install -y git nodejs mysql-client wget cron na
 
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
-RUN a2enmod rewrite
-ADD ./sites-available /etc/apache2/sites-available
-
 RUN \
 # kellenschmidt.com
     mkdir /var/www/kellenschmidt.com/ && \
@@ -35,6 +32,7 @@ RUN \
     chmod -R 755 /var/www/ && \
     mkdir /home/bin
 
+ADD ./sites-available /etc/apache2/sites-available
 ADD ./bin /home/bin
 ADD ./cron /etc/cron.d
 
@@ -44,6 +42,7 @@ RUN bash /home/bin/get_certs_set_crontab.sh
 # Set default ServerName (to remove warning)
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
+RUN a2enmod rewrite
 RUN a2ensite kellenschmidt.com && \
     a2ensite api.kellenschmidt.com && \
     a2ensite urlshortenerphp.kellenschmidt.com && \
