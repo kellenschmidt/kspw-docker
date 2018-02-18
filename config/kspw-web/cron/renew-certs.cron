@@ -3,12 +3,12 @@
 ##############################
 
 # At every minute
-* * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
+# * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
 
 # At every 2nd minute
 # */2 * * * * certbot-auto renew >> /var/log/cron.log 2>&1
 
 # At minute 0 past hour 0 and 12
-# 0 0,12 * * * certbot-auto renew >> /var/log/cron.log 2>&1
+0 0,12 * * * certbot-auto renew >> /var/log/cron.log 2>&1
 
 #
