@@ -82,11 +82,11 @@ Environment variables file, `.env`, is required. Required variables:
 
 `ENV`: Unnecessary. Set automatically by installation scripts. Options:
 
-| `ENV`     | Code branch   | URLs                    | Other            |
-| --------- | ------------- | ----------------------- | ---------------- |
-| `prod`    | master        | production (*.com)      | Runs Certbot     |
-| `test`    | development   | production (test*.com)  | Runs Certbot     |
-| `docker`  | development   | development (*.kspw)    |                  |
+| `ENV`     | Code branch   | URLs                                  | Other          |
+| --------- | ------------- | ------------------------------------- | -------------- |
+| `prod`    | master        | production (*.kellenschmidt.com)      | Runs Certbot   |
+| `test`    | development   | production (test*.kellenschmidt.com)  | Runs Certbot   |
+| `docker`  | development   | development (*.kspw)                  |                |
 
 ## AWS Deployment
 
@@ -140,11 +140,4 @@ Install PHP
 ```Shell
 sudo yum remove httpd* php*
 sudo yum install php70
-```
-
-Configure file permissions
-
-```Shell
-sudo chmod g+s /home/ec2-user/
-sudo chmod u+s /home/ec2-user/
 ```
