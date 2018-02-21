@@ -1,6 +1,6 @@
 # KSPW-Docker
 
-Docker containerization of [kellenschmidt.com](https://kellenschmidt.com)
+Docker containerization of [kellenschmidt.com](http://kellenschmidt.com)
 
 ## Features
 
@@ -85,8 +85,8 @@ Environment variables file, `.env`, is required. Required variables:
 | `ENV`     | Code branch   | URLs                                  | Other          |
 | --------- | ------------- | ------------------------------------- | -------------- |
 | `prod`    | master        | production (*.kellenschmidt.com)      | Runs Certbot   |
-| `test`    | development   | production (test*.kellenschmidt.com)  | Runs Certbot   |
-| `docker`  | development   | development (*.kspw)                  |                |
+| `test`    | dev           | production (test*.kellenschmidt.com)  | Runs Certbot   |
+| `docker`  | dev           | development (*.kspw)                  |                |
 
 ## AWS Deployment
 

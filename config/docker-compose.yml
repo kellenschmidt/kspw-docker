@@ -6,8 +6,8 @@ services:
     image: kspw_web
     restart: unless-stopped
     ports:
-      - "80":"80"
-      - "443":"443"
+      - 80:80
+      - 443:443
     links:
       - kspw-db
     volumes:
@@ -29,7 +29,7 @@ services:
     image: kspw_db
     restart: unless-stopped
     ports:
-      - "3306":"3306"
+      - 3306:3306
     volumes:
       - ../.env:/etc/environment
       - ./kspw-db/database/backups:/home/backups
@@ -49,5 +49,5 @@ services:
     links:
         - kspw-db:db
     ports:
-        - "8080":"80"
+        - 8080:80
     container_name: kspw-pma
