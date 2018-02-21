@@ -56,7 +56,7 @@ Edit hosts file
 
 `npm run start-test`: Starts the Docker containers and installs code for testing. The frontend can be accessed from http://test.kellenschmidt.com. The backend can be accessed from http://testapi.kellenschmidt.com.
 
-## Environment Variables
+### Environment Variables
 
 Environment variables file, `.env`, is required. Required variables:
 
@@ -87,22 +87,16 @@ Environment variables file, `.env`, is required. Required variables:
 3. Create and associate elastic IP address
 4. Configure security group to allow HTTP(80), HTTPS(443), and SSH(22), PhpMyAdmin(8080)
 5. Optionally add custom password-protected keypair
-6. Install Git
-
-```Shell
-sudo yum install git
-```
-
-7. Install Docker
+6. Install Git and Docker
 
 ```Shell
 sudo yum update -y
-sudo yum install -y docker
+sudo yum install -y git docker
 sudo usermod -a -G docker ec2-user
 sudo service docker start
 sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-8. Log out and log back in to ssh
-9. Start it up! `npm run start-prod`
+7. Log out and log back in to SSH
+8. Start it up! `npm run start-prod`
