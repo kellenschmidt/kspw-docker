@@ -21,6 +21,7 @@ Instructions for running the project locally. These commands are to be run in th
 Install prerequisites
 
 * `Docker`: [Docker Download](https://store.docker.com/search?type=edition&offering=community)
+* `Git`: [Git Download](https://git-scm.com/downloads)
 
 Download project and install dependencies
 
@@ -28,11 +29,6 @@ Download project and install dependencies
 git clone https://github.com/kellenschmidt/kspw-docker.git
 cd kspw-docker
 ```
-
-Edit hosts file
-
-* `sudo nano /etc/hosts`
-* Add `127.0.0.1 kspw api.kspw test.kspw testapi.kspw urlshortenerphp.kspw` on a new line at the end of the file
 
 Create environment variables file
 
@@ -44,6 +40,11 @@ Preload database
 * Latest backup (from matching environment) will automatically be restored if one exists
 * If not restoring from backup, add SQL files to `config/kspw-db/database/schema-with-data`
 * Otherwise, the empty schema will be loaded from `config/kspw-db/database/schema-only`
+
+Edit hosts file
+
+* `sudo nano /etc/hosts`
+* Add `127.0.0.1 kspw api.kspw urlshortenerphp.kspw test.kspw testapi.kspw` on a new line at the end of the file
 
 ### Docker Scripts
 
@@ -86,16 +87,22 @@ Environment variables file, `.env`, is required. Required variables:
 3. Create and associate elastic IP address
 4. Configure security group to allow HTTP(80), HTTPS(443), and SSH(22), PhpMyAdmin(8080)
 5. Optionally add custom password-protected keypair
-6. Install Docker
+6. Install Git
+
+```Shell
+sudo yum install git
+```
+
+7. Install Docker
 
 ```Shell
 sudo yum update -y
 sudo yum install -y docker
-sudo service docker start
 sudo usermod -a -G docker ec2-user
-sudo service docker restart
+sudo service docker start
 sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-7. Start it up! `npm run start-prod`
+8. Log out and log back in to ssh
+9. Start it up! `npm run start-prod`

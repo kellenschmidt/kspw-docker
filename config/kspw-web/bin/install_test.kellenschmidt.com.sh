@@ -9,4 +9,6 @@ if [ "$1" == "test" ]; then
 	git checkout -b dev origin/staging
   npm install
   node --max-old-space-size=768 ./node_modules/.bin/ng build --prod --env=$1
+else
+  mkdir /var/www/test.kellenschmidt.com/public
 fi

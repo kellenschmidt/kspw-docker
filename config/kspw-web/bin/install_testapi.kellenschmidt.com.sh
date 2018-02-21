@@ -9,4 +9,6 @@ if [ "$1" == "test" ]; then
 	git checkout -b dev origin/staging
   sh install_composer.sh
   php composer.phar install
+else
+  mkdir /var/www/test.kellenschmidt.com/public
 fi
