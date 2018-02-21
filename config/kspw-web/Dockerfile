@@ -1,36 +1,43 @@
 FROM php:7-apache
 
-RUN apt-get update -y && apt-get install -y git nodejs mysql-client wget cron nano
+ARG environment
+
+RUN apt-get update -y && apt-get install -y git wget cron nano gnupg zip unzip
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    apt-get install -y nodejs
 
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
 RUN \
 # kellenschmidt.com
     mkdir /var/www/kellenschmidt.com/ && \
-    mkdir /var/www/kellenschmidt.com/public && \
     mkdir /var/log/apache2/kellenschmidt.com && \
 # api.kellenschmidt.com
     mkdir /var/www/api.kellenschmidt.com && \
-    mkdir /var/www/api.kellenschmidt.com/public && \
     mkdir /var/log/apache2/api.kellenschmidt.com/ && \
 # urlshortenerphp.kellenschmidt.com
     mkdir /var/www/urlshortenerphp.kellenschmidt.com && \
-    mkdir /var/www/urlshortenerphp.kellenschmidt.com/public && \
     mkdir /var/log/apache2/urlshortenerphp.kellenschmidt.com && \
 # test.kellenschmidt.com
     mkdir /var/www/test.kellenschmidt.com && \
-    mkdir /var/www/test.kellenschmidt.com/public && \
     mkdir /var/log/apache2/test.kellenschmidt.com && \
 # testapi.kellenschmidt.com
     mkdir /var/www/testapi.kellenschmidt.com && \
-    mkdir /var/www/testapi.kellenschmidt.com/public && \
     mkdir /var/log/apache2/testapi.kellenschmidt.com && \
 # other
     chmod -R 755 /var/www/ && \
     mkdir /home/bin
 
+ADD ./bin /home/bin
+
+RUN bash /home/bin/install_kellenschmidt.com.sh ${environment}
+RUN bash /home/bin/install_api.kellenschmidt.com.sh ${environment}
+RUN bash /home/bin/install_urlshortenerphp.kellenschmidt.com.sh ${environment}
+RUN bash /home/bin/install_test.kellenschmidt.com.sh ${environment}
+RUN bash /home/bin/install_testapi.kellenschmidt.com.sh ${environment}
+
 ADD ./sites-available /etc/apache2/sites-available
-ADD ./cron /etc/cron.d
 
 # Set default ServerName (to remove warning)
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf

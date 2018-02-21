@@ -1,15 +1,12 @@
 {
   "name": "kspw-docker",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "install-dev": "sh bin/install.sh docker",
-    "install-prod": "sh bin/install.sh prod",
     "start-dev": "bash ./bin/start.sh docker",
+    "start-test": "bash ./bin/start.sh test",
     "start-prod": "bash ./bin/start.sh prod",
-    "deploy-test": "sh bin/install.sh test && bash ./bin/start.sh test",
-    "deploy-prod": "sh bin/install.sh prod && bash ./bin/start.sh prod",
     "stop": "bash ./bin/stop.sh"
   }
 }

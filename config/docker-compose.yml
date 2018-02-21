@@ -2,7 +2,10 @@ version: '3'
 
 services:
   kspw-web:
-    build: ./kspw-web
+    build:
+      context: ./kspw-web
+      args:
+        - environment=${ENV}
     image: kspw_web
     restart: unless-stopped
     ports:
@@ -11,12 +14,12 @@ services:
     links:
       - kspw-db
     volumes:
-      - ../kellenschmidt.com/public:/var/www/kellenschmidt.com/public
-      - ../api.kellenschmidt.com:/var/www/api.kellenschmidt.com
-      - ../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
-      - ../test.kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
-      - ../testapi.kellenschmidt.com:/var/www/testapi.kellenschmidt.com
-      - ./kspw-web/bin:/home/bin
+      # - ../kellenschmidt.com/public:/var/www/kellenschmidt.com/public
+      # - ../api.kellenschmidt.com:/var/www/api.kellenschmidt.com
+      # - ../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
+      # - ../test.kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
+      # - ../testapi.kellenschmidt.com:/var/www/testapi.kellenschmidt.com
+      - ./kspw-web/cron:/etc/cron.d
     environment:
       - MYSQL_USER
       - MYSQL_PASSWORD

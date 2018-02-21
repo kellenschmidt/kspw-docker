@@ -3,6 +3,8 @@
 # Arguments
 # $1: Name of environment that is being deployed
 
+echo "ENV=$1" >> .env
+
 # Load database
 bash bin/restore_backup.sh $1
 

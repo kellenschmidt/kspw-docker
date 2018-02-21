@@ -21,17 +21,12 @@ Instructions for running the project locally. These commands are to be run in th
 Install prerequisites
 
 * `Docker`: [Docker Download](https://store.docker.com/search?type=edition&offering=community)
-* `Git`: [Git Download](https://git-scm.com/downloads)
-* `Node.js`: [Node.js Download](https://nodejs.org/en/download/)
-* `PHP`: [PHP Download](http://php.net/downloads.php)
-* `Angular CLI`: `npm i -g @angular/cli`
 
 Download project and install dependencies
 
 ```Shell
 git clone https://github.com/kellenschmidt/kspw-docker.git
 cd kspw-docker
-npm install-dev
 ```
 
 Edit hosts file
@@ -42,13 +37,7 @@ Edit hosts file
 Create environment variables file
 
 * `touch .env` in project root
-* Populate with the required variables listed under "General Notes"
-
-Start Docker containers
-
-```Shell
-npm run start-dev
-```
+* Populate with the required variables listed under "Environment Variables"
 
 Preload database
 
@@ -56,21 +45,23 @@ Preload database
 * If not restoring from backup, add SQL files to `config/kspw-db/database/schema-with-data`
 * Otherwise, the empty schema will be loaded from `config/kspw-db/database/schema-only`
 
-## Other Docker Scripts
+### Docker Scripts
 
-`npm run stop`: Stops and removes the docker containers. Backs up database to `/database/backups`.
+`npm run start-dev`: Starts the Docker containers locally and installs code for development. The frontend can be accessed from http://kspw. The backend can be accessed from http://api.kspw.
 
-`npm run deploy-prod`: Starts the Docker containers and installs code for production. The frontend can be accessed from http://kellenschmidt.com. The backend can be accessed from http://api.kellenschmidt.com.
+`npm run stop`: Stops and removes the docker containers.
 
-`npm run deploy-test`: Starts the Docker containers and installs code for testing. The frontend can be accessed from http://test.kellenschmidt.com. The backend can be accessed from http://testapi.kellenschmidt.com.
+`npm run start-prod`: Starts the Docker containers and installs code for production. The frontend can be accessed from http://kellenschmidt.com. The backend can be accessed from http://api.kellenschmidt.com.
 
-## General Notes
+`npm run start-test`: Starts the Docker containers and installs code for testing. The frontend can be accessed from http://test.kellenschmidt.com. The backend can be accessed from http://testapi.kellenschmidt.com.
+
+## Environment Variables
 
 Environment variables file, `.env`, is required. Required variables:
 
 `MYSQL_ROOT_PASSWORD`: Required (but ignored). Overwritten by Docker. Find new MySQL root password with `docker logs kspw-db 2>&1 | grep GENERATED`
 
-`MYSQL_USER`: Required. Username of non-root MySQL user. Note: Must also edit `config/kspw-db/database/grant_permissions.sql`
+`MYSQL_USER`: Required. Username of non-root MySQL user. Note: Must also edit `config/kspw-db/database/permissions/grant_permissions.sql`
 
 `MYSQL_PASSWORD`: Required. Password of non-root MySQL user.
 
@@ -85,7 +76,7 @@ Environment variables file, `.env`, is required. Required variables:
 | `ENV`     | Code branch   | URLs                                  | Other          |
 | --------- | ------------- | ------------------------------------- | -------------- |
 | `prod`    | master        | production (*.kellenschmidt.com)      | Runs Certbot   |
-| `test`    | dev           | production (test*.kellenschmidt.com)  | Runs Certbot   |
+| `test`    | staging       | production (test*.kellenschmidt.com)  | Runs Certbot   |
 | `docker`  | dev           | development (*.kspw)                  |                |
 
 ## AWS Deployment
@@ -95,10 +86,7 @@ Environment variables file, `.env`, is required. Required variables:
 3. Create and associate elastic IP address
 4. Configure security group to allow HTTP(80), HTTPS(443), and SSH(22), PhpMyAdmin(8080)
 5. Optionally add custom password-protected keypair
-
-After starting an Amazon Linux AWS EC2 instance, the following commands will update server settings and install the prerequisite dependencies to prepare for Docker
-
-Install Docker
+6. Install Docker
 
 ```Shell
 sudo yum update -y
@@ -110,34 +98,4 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-Install Git
-
-```Shell
-sudo yum install git
-```
-
-Install Node.js and configure NPM
-
-```Shell
-curl --silent --location https://rpm.nodesource.com/setup_8.x | sudo bash -
-sudo yum -y install nodejs
-sudo chmod 777 /usr/lib/node_modules/
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-export PATH=~/.npm-global/bin:$PATH
-touch ~/.profile
-source ~/.profile
-```
-
-Install Angular CLI
-
-```Shell
-npm i -g @angular/cli
-```
-
-Install PHP
-
-```Shell
-sudo yum remove httpd* php*
-sudo yum install php70
-```
+7. Start it up! `npm run start-prod`
