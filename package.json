@@ -4,11 +4,12 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "install": "sh bin/install.sh docker",
-    "docker-start": "bash ./bin/start.sh docker",
-    "docker-start-prod": "bash ./bin/start.sh prod",
-    "docker-deploy-test": "sh bin/install.sh test && bash ./bin/start.sh test",
-    "docker-deploy-prod": "sh bin/install.sh prod && bash ./bin/start.sh prod",
-    "docker-stop": "bash ./bin/stop.sh"
+    "install-dev": "sh bin/install.sh docker",
+    "install-prod": "sh bin/install.sh prod",
+    "start-dev": "bash ./bin/start.sh docker",
+    "start-prod": "bash ./bin/start.sh prod",
+    "deploy-test": "sh bin/install.sh test && bash ./bin/start.sh test",
+    "deploy-prod": "sh bin/install.sh prod && bash ./bin/start.sh prod",
+    "stop": "bash ./bin/stop.sh"
   }
 }

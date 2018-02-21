@@ -31,7 +31,7 @@ Download project and install dependencies
 ```Shell
 git clone https://github.com/kellenschmidt/kspw-docker.git
 cd kspw-docker
-npm install
+npm install-dev
 ```
 
 Edit hosts file
@@ -47,7 +47,7 @@ Create environment variables file
 Start Docker containers
 
 ```Shell
-npm run docker-start
+npm run start-dev
 ```
 
 Preload database
@@ -58,11 +58,11 @@ Preload database
 
 ## Other Docker Scripts
 
-`npm run docker-stop`: Stops and removes the docker containers. Backs up database to `/database/backups`.
+`npm run stop`: Stops and removes the docker containers. Backs up database to `/database/backups`.
 
-`npm run docker-deploy-prod`: Starts the Docker containers and installs code for production. The frontend can be accessed from http://kellenschmidt.com. The backend can be accessed from http://api.kellenschmidt.com.
+`npm run deploy-prod`: Starts the Docker containers and installs code for production. The frontend can be accessed from http://kellenschmidt.com. The backend can be accessed from http://api.kellenschmidt.com.
 
-`npm run docker-deploy-test`: Starts the Docker containers and installs code for testing. The frontend can be accessed from http://test.kellenschmidt.com. The backend can be accessed from http://testapi.kellenschmidt.com.
+`npm run deploy-test`: Starts the Docker containers and installs code for testing. The frontend can be accessed from http://test.kellenschmidt.com. The backend can be accessed from http://testapi.kellenschmidt.com.
 
 ## General Notes
 

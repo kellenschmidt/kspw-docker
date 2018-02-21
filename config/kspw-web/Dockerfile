@@ -25,19 +25,12 @@ RUN \
     mkdir /var/www/testapi.kellenschmidt.com && \
     mkdir /var/www/testapi.kellenschmidt.com/public && \
     mkdir /var/log/apache2/testapi.kellenschmidt.com && \
-# certbot
-    mkdir /var/www/html/.well-known && \
-    mkdir /var/www/html/.well-known/acme-challenge && \
 # other
     chmod -R 755 /var/www/ && \
     mkdir /home/bin
 
 ADD ./sites-available /etc/apache2/sites-available
-ADD ./bin /home/bin
 ADD ./cron /etc/cron.d
-
-# Run certbot and set cron command conditionally based on environment 
-RUN bash /home/bin/get_certs_set_crontab.sh
 
 # Set default ServerName (to remove warning)
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf

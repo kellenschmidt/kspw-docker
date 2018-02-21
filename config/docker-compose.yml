@@ -16,6 +16,7 @@ services:
       - ../urlshortenerphp.kellenschmidt.com:/var/www/urlshortenerphp.kellenschmidt.com
       - ../test.kellenschmidt.com/public:/var/www/test.kellenschmidt.com/public
       - ../testapi.kellenschmidt.com:/var/www/testapi.kellenschmidt.com
+      - ./kspw-web/bin:/home/bin
     environment:
       - MYSQL_USER
       - MYSQL_PASSWORD

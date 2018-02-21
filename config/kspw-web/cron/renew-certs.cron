@@ -6,9 +6,12 @@
 # * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
 
 # At every 2nd minute
-# */2 * * * * certbot-auto renew >> /var/log/cron.log 2>&1
+# */2 * * * * certbot-auto renew --pre-hook "bash /home/bin/public_to_temp.sh" --post-hook "bash /home/bin/temp_to_public.sh" >> /var/log/cron.log 2>&1
 
 # At minute 0 past hour 0 and 12
-0 0,12 * * * certbot-auto renew >> /var/log/cron.log 2>&1
+# 0 0,12 * * * certbot-auto renew --pre-hook "bash /home/bin/public_to_temp.sh" --post-hook "bash /home/bin/temp_to_public.sh" >> /var/log/cron.log 2>&1
+
+# At 9am GMT (3am CT) on the 1st of every other month (Feb, Apr, etc.)
+0 9 1 */2 * certbot-auto renew --pre-hook "bash /home/bin/public_to_temp.sh" --post-hook "bash /home/bin/temp_to_public.sh" >> /var/log/cron.log 2>&1
 
 #
