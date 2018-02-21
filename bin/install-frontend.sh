@@ -14,7 +14,7 @@ rm -rf $folder
 git clone https://github.com/kellenschmidt/kellenschmidt.com.git $folder
 cd $folder
 if [ "$1" != "prod" ]; then
-    git checkout -b dev origin/dev
+	git checkout -b dev origin/dev
 fi
 
 npm install

@@ -12,15 +12,17 @@ cp config/kspw-db/database/permissions/* config/kspw-db/database/initialize
 
 # If a valid backup file exists
 if [ -f "$newestBackup" ]; then
-    # Restore the newest backup
-    cp ${newestBackup} config/kspw-db/database/initialize
-    echo "Restoring from backup"
+  # Restore the newest backup
+  cp ${newestBackup} config/kspw-db/database/initialize
+  echo "Restoring from backup"
+
 # Elif the schema-with-data directory has contents
 elif [ "$(ls -A config/kspw-db/database/schema-with-data)" ]; then
-    cp config/kspw-db/database/schema-with-data/* config/kspw-db/database/initialize
-    echo "Restoring from schema-with-data"
+  cp config/kspw-db/database/schema-with-data/* config/kspw-db/database/initialize
+  echo "Restoring from schema-with-data"
+
 # Else copy schema without data to mysql init directory
 else
-    cp config/kspw-db/database/schema-only/* config/kspw-db/database/initialize
-    echo "Restoring from schema-only"
+  cp config/kspw-db/database/schema-only/* config/kspw-db/database/initialize
+  echo "Restoring from schema-only"
 fi
