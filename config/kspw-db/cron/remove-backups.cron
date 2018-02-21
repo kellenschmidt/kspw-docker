@@ -8,13 +8,13 @@
 # Hourly every 54th minute
 54 * * * * bash /home/bin/remove_backups.sh hourly >> /var/log/cron.log 2>&1
 
-# Daily at 23:54
-54 23 * * * bash /home/bin/remove_backups.sh daily >> /var/log/cron.log 2>&1
+# Daily at 8:54 GMT
+54 8 * * * bash /home/bin/remove_backups.sh daily >> /var/log/cron.log 2>&1
 
-# Weekly on Sunday at 23:54
-54 23 * * 0 bash /home/bin/remove_backups.sh weekly >> /var/log/cron.log 2>&1
+# Weekly on Sunday at 8:54 GMT
+54 8 * * 0 bash /home/bin/remove_backups.sh weekly >> /var/log/cron.log 2>&1
 
-# Monthly on 1st at 23:54
-54 23 1 * * bash /home/bin/remove_backups.sh monthly >> /var/log/cron.log 2>&1
+# Monthly on 1st at 8:54 GMT
+54 8 1 * * bash /home/bin/remove_backups.sh monthly >> /var/log/cron.log 2>&1
 
 #

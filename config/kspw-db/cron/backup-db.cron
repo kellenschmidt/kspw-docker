@@ -11,13 +11,13 @@
 # Hourly every 49th minute
 49 * * * * bash /home/bin/backup_db.sh hourly >> /var/log/cron.log 2>&1
 
-# Daily at 23:50
-50 23 * * * bash /home/bin/backup_db.sh daily >> /var/log/cron.log 2>&1
+# Daily at 8:50 GMT
+50 8 * * * bash /home/bin/backup_db.sh daily >> /var/log/cron.log 2>&1
 
-# Weekly on Sunday at 23:49
-49 23 * * 0 bash /home/bin/backup_db.sh weekly >> /var/log/cron.log 2>&1
+# Weekly on Sunday at 8:49 GMT
+49 8 * * 0 bash /home/bin/backup_db.sh weekly >> /var/log/cron.log 2>&1
 
-# Monthly on 1st at 23:49
-49 23 1 * * bash /home/bin/backup_db.sh monthly >> /var/log/cron.log 2>&1
+# Monthly on 1st at 8:49 GMT
+49 8 1 * * bash /home/bin/backup_db.sh monthly >> /var/log/cron.log 2>&1
 
 #
