@@ -12,7 +12,7 @@ npm install
 
 if [ "$1" != "docker" ]; then
 	# Increase max memory usage of process for server
-	node --max-old-space-size=768 ./node_modules/.bin/ng build --prod --env=$1
+	node --max-old-space-size=1024 ./node_modules/.bin/ng build --prod --env=$1
 else
 	# Normal build with regular memory size
 	./node_modules/.bin/ng build --prod --env=$1
