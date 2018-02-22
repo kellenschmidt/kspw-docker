@@ -1,6 +1,6 @@
-# KSPW-Docker
+# kellenschmidt.com Docker Containerization
 
-Docker containerization of [kellenschmidt.com](http://kellenschmidt.com)
+Docker containerization of [kellenschmidt.com](http://kellenschmidt.com) to standardize development, testing, and deployment of the application and its components as a whole.
 
 ## Features
 
@@ -16,7 +16,7 @@ Docker containerization of [kellenschmidt.com](http://kellenschmidt.com)
 
 ## Local Development
 
-Instructions for running the project locally. These commands are to be run in the top level 'kspw-docker' folder
+Instructions for running the project locally. These commands are to be run in the top level `kspw-docker` folder.
 
 Install prerequisites
 

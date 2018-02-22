@@ -15,8 +15,8 @@ docker-compose -f config/docker-compose.yml up -d --build --force-recreate
 # Get HTTPS certs if prod or test environment
 if [ "$1" != "docker" ]; then
   docker exec kspw-web bash /home/bin/get_certs_set_crontab.sh
+  docker exec kspw-web cron
 fi
 
 # Start cron inside Docker
 docker exec kspw-db cron
-docker exec kspw-web cron

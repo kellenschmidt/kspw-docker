@@ -10,5 +10,5 @@ if [ "$1" == "test" ]; then
   sh install_composer.sh
   php composer.phar install
 else
-  mkdir /var/www/test.kellenschmidt.com/public
+  mkdir /var/www/testapi.kellenschmidt.com/public
 fi

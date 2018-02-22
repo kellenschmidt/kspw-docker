@@ -6,18 +6,18 @@
 # * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
 
 # At every 2nd minute
-# */2 * * * * bash /home/bin/backup_db.sh test >> /var/log/cron.log 2>&1
+# */2 * * * * /home/bin/backup_db.sh test >> /var/log/cron.log 2>&1
 
 # Hourly every 49th minute
-49 * * * * bash /home/bin/backup_db.sh hourly >> /var/log/cron.log 2>&1
+49 * * * * /home/bin/backup_db.sh hourly >> /var/log/cron.log 2>&1
 
 # Daily at 8:50 GMT
-50 8 * * * bash /home/bin/backup_db.sh daily >> /var/log/cron.log 2>&1
+50 8 * * * /home/bin/backup_db.sh daily >> /var/log/cron.log 2>&1
 
 # Weekly on Sunday at 8:49 GMT
-49 8 * * 0 bash /home/bin/backup_db.sh weekly >> /var/log/cron.log 2>&1
+49 8 * * 0 /home/bin/backup_db.sh weekly >> /var/log/cron.log 2>&1
 
 # Monthly on 1st at 8:49 GMT
-49 8 1 * * bash /home/bin/backup_db.sh monthly >> /var/log/cron.log 2>&1
+49 8 1 * * /home/bin/backup_db.sh monthly >> /var/log/cron.log 2>&1
 
 #
