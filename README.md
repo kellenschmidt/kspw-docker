@@ -1,6 +1,6 @@
 # kellenschmidt.com Docker Containerization
 
-Docker containerization of [kellenschmidt.com](http://kellenschmidt.com) to standardize development, testing, and deployment of the application and its components as a whole.
+Docker containerization of [kellenschmidt.com](http://kellenschmidt.com) to standardize development, testing, and deployment of the application and its components as a whole to local and production environments.
 
 ## Features
 
@@ -33,7 +33,7 @@ cd kspw-docker
 Create environment variables file
 
 * `touch .env` in project root
-* Populate with the required variables listed under "Environment Variables"
+* Populate with the required variables listed under [Environment Variables](#environment-variables)
 
 Preload database
 
