@@ -18,12 +18,15 @@ Docker containerization of [kellenschmidt.com](http://kellenschmidt.com) to stan
 
 Instructions for running the project locally. These commands are to be run in the top level `kspw-docker` folder.
 
-Install prerequisites
+Install prerequisite dependencies depending on environment
 
-* `Docker`: [Docker Download](https://store.docker.com/search?type=edition&offering=community)
-* `Git`: [Git Download](https://git-scm.com/downloads)
+| Development   | Production   | Download link                                                                                                                        |
+| ------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| Docker        | Docker       | [https://store.docker.com/search?type=edition&offering=community](https://store.docker.com/search?type=edition&offering=community)   |
+| Git           |              | [https://git-scm.com/downloads](https://git-scm.com/downloads)                                                                       |
+| Node.js       |              | [https://nodejs.org/en/download](https://nodejs.org/en/download)                                                                     |
 
-Download project and install dependencies
+Download project
 
 ```Shell
 git clone https://github.com/kellenschmidt/kspw-docker.git
@@ -84,14 +87,14 @@ Environment variables file, `.env`, is required. Required variables:
 
 1. Launch Linux EC2 instance
 2. Create keypair for SSH
-3. Create and associate elastic IP address
-4. Configure security group to allow HTTP(80), HTTPS(443), and SSH(22), PhpMyAdmin(8080)
-5. Optionally add custom password-protected keypair
-6. Install Git and Docker
+3. Configure security group to allow HTTP(80), HTTPS(443), and SSH(22), PhpMyAdmin(8080)
+4. Create and associate elastic IP address
+5. Optionally add custom password-protected keypair via SSH and authorized_keys
+6. Install Docker
 
 ```Shell
 sudo yum update -y
-sudo yum install -y git docker
+sudo yum install -y docker
 sudo usermod -a -G docker ec2-user
 sudo service docker start
 sudo curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -99,4 +102,13 @@ sudo chmod +x /usr/local/bin/docker-compose
 ```
 
 7. Log out and log back in to SSH
-8. Start it up! `npm run start-prod`
+8. Download kspw-docker repository
+
+```Shell
+curl -L https://api.github.com/repos/kellenschmidt/kspw-docker/tarball/master > ~/kspw-docker.tar.gz
+tar -xzf ~/kspw-docker.tar.gz
+mv ~/kellenschmidt-kspw-docker-* ~/kspw-docker
+rm ~/kspw-docker.tar.gz
+```
+
+9. Start it up! `bash bin/start.sh prod`
