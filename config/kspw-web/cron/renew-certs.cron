@@ -5,8 +5,8 @@
 # At every minute
 # * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
 
-# At every 2nd minute
-# */2 * * * * certbot-auto renew --pre-hook "bash /home/bin/public_to_temp.sh" --post-hook "bash /home/bin/temp_to_public.sh" >> /var/log/cron.log 2>&1
+# At every 8:50am GMT every day
+50 8 * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
 
 # At minute 0 past hour 0 and 12
 # 0 0,12 * * * certbot-auto renew --pre-hook "bash /home/bin/public_to_temp.sh" --post-hook "bash /home/bin/temp_to_public.sh" >> /var/log/cron.log 2>&1

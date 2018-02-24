@@ -9,25 +9,14 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
 
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
-RUN \
-# kellenschmidt.com
-    mkdir /var/www/kellenschmidt.com/ && \
-    mkdir /var/log/apache2/kellenschmidt.com && \
-# api.kellenschmidt.com
-    mkdir /var/www/api.kellenschmidt.com && \
+RUN mkdir /var/log/apache2/kellenschmidt.com && \
     mkdir /var/log/apache2/api.kellenschmidt.com/ && \
-# urlshortenerphp.kellenschmidt.com
-    mkdir /var/www/urlshortenerphp.kellenschmidt.com && \
     mkdir /var/log/apache2/urlshortenerphp.kellenschmidt.com && \
-# test.kellenschmidt.com
-    mkdir /var/www/test.kellenschmidt.com && \
     mkdir /var/log/apache2/test.kellenschmidt.com && \
-# testapi.kellenschmidt.com
-    mkdir /var/www/testapi.kellenschmidt.com && \
     mkdir /var/log/apache2/testapi.kellenschmidt.com && \
-# other
     chmod -R 755 /var/www/ && \
-    mkdir /home/bin
+    mkdir /home/bin && \
+    mkdir /home/cron
 
 ADD ./bin /home/bin
 
@@ -49,3 +38,6 @@ RUN a2ensite kellenschmidt.com && \
     a2ensite test.kellenschmidt.com && \
     a2ensite testapi.kellenschmidt.com
 RUN service apache2 restart
+
+ADD ./cron /home/cron
+RUN crontab /home/cron/renew-certs.cron

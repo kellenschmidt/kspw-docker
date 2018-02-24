@@ -13,8 +13,6 @@ services:
       - 443:443
     links:
       - kspw-db
-    volumes:
-      - ./kspw-web/cron:/etc/cron.d
     environment:
       - MYSQL_USER
       - MYSQL_PASSWORD
