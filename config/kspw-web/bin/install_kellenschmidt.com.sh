@@ -3,6 +3,7 @@
 # Arguments
 # $1: Name of environment that is being deployed
 
+mkdir /var/www/kellenschmidt.com
 git clone https://github.com/kellenschmidt/kellenschmidt.com.git /var/www/kellenschmidt.com
 cd /var/www/kellenschmidt.com
 if [ "$1" == "docker" ]; then

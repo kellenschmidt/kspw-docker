@@ -3,6 +3,7 @@
 # Arguments
 # $1: Name of environment that is being deployed
 
+mkdir /var/www/test.kellenschmidt.com
 if [ "$1" == "test" ]; then
   git clone https://github.com/kellenschmidt/kellenschmidt.com.git /var/www/test.kellenschmidt.com
   cd /var/www/test.kellenschmidt.com
