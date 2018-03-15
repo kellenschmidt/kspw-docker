@@ -5,12 +5,14 @@ services:
     build:
       context: ./kspw-web
       args:
-        - environment=${ENV}
+        - ENVIRONMENT=${ENV}
     image: kspw_web
     restart: unless-stopped
     ports:
       - 80:80
       - 443:443
+    volumes:
+      - ./kspw-web/cron:/home/cron
     links:
       - kspw-db
     environment:
@@ -28,8 +30,6 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - ../.env:/etc/environment
-      - ./kspw-db/database/backups:/home/backups
       - ./kspw-db/database/initialize:/docker-entrypoint-initdb.d
     environment:
       - MYSQL_ROOT_PASSWORD
@@ -38,7 +38,23 @@ services:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - OAUTH_ACCESS_TOKEN
       - ENV
-    container_name: kspw-db    
+    container_name: kspw-db
+
+  kspw-cron:
+    build: 
+      context: ./kspw-cron
+      args:
+        - OAUTH_ACCESS_TOKEN=${OAUTH_ACCESS_TOKEN}
+    image: kspw-cron
+    restart: unless-stopped
+    volumes:
+      - ./kspw-cron/db-backups:/home/backups
+    environment:
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+      - OAUTH_ACCESS_TOKEN
+      - ENV
+    container_name: kspw-cron
 
   kspw-pma:
     image: phpmyadmin/phpmyadmin

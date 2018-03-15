@@ -3,7 +3,7 @@
 ############################
 
 # At every minute
-# * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
+# * * * * * echo "Heartbeat - backup_db - $(date)" >> /var/log/cron.log 2>&1
 
 # At every 2nd minute
 # */2 * * * * /home/bin/backup_db.sh test >> /var/log/cron.log 2>&1
