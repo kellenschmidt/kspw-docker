@@ -12,4 +12,4 @@ certbot-auto --non-interactive --agree-tos --apache --email kellenschmidt31@gmai
 
 bash /home/bin/temp_to_public.sh
 
-crontab /etc/cron.d/renew-certs.cron
+crontab /home/cron/renew-certs.cron

@@ -1,6 +1,6 @@
 FROM php:7-apache
 
-ARG environment
+ARG ENVIRONMENT
 
 RUN apt-get update -y && apt-get install -y git wget cron nano gnupg zip unzip
 
@@ -20,11 +20,11 @@ RUN mkdir /var/log/apache2/kellenschmidt.com && \
 
 ADD ./bin /home/bin
 
-RUN bash /home/bin/install_kellenschmidt.com.sh ${environment}
-RUN bash /home/bin/install_api.kellenschmidt.com.sh ${environment}
-RUN bash /home/bin/install_urlshortenerphp.kellenschmidt.com.sh ${environment}
-RUN bash /home/bin/install_test.kellenschmidt.com.sh ${environment}
-RUN bash /home/bin/install_testapi.kellenschmidt.com.sh ${environment}
+RUN bash /home/bin/install_kellenschmidt.com.sh ${ENVIRONMENT}
+RUN bash /home/bin/install_api.kellenschmidt.com.sh ${ENVIRONMENT}
+RUN bash /home/bin/install_urlshortenerphp.kellenschmidt.com.sh ${ENVIRONMENT}
+RUN bash /home/bin/install_test.kellenschmidt.com.sh ${ENVIRONMENT}
+RUN bash /home/bin/install_testapi.kellenschmidt.com.sh ${ENVIRONMENT}
 
 ADD ./sites-available /etc/apache2/sites-available
 
@@ -38,6 +38,3 @@ RUN a2ensite kellenschmidt.com && \
     a2ensite test.kellenschmidt.com && \
     a2ensite testapi.kellenschmidt.com
 RUN service apache2 restart
-
-ADD ./cron /home/cron
-RUN crontab /home/cron/renew-certs.cron
