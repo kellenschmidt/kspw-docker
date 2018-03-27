@@ -4,19 +4,22 @@
 # None
 
 if [ ! -d ~/init ]; then
-  cp ~/kspw-docker/init ~/init
+  cp -r ~/kspw-docker/init ~/init
   echo "Copying init folder from kspw-docker/ to ~/"
 fi
 
-backupFile="~/init/mysql-prod-*_*.sql.gz"
-newestBackup=$(ls -t ${backupFile} | head -1)
+backupSqlGz="~/init/mysql-prod-*_*.sql.gz"
+newestBackupSqlGz=$(ls -t ${backupSqlGz} | head -1)
 
-if [ -f "$newestBackup" ]; then
+backupSql="~/init/*.sql"
+newestBackupSql=$(ls -t ${backupSql} | head -1)
+
+if [ -f "$newestBackupSqlGz" ]; then
   # Restore the newest backup
-  cp ${newestBackup} ~/kspw-docker/config/kspw-cron/db-backups
-  echo "Copying newest backup (${newestBackup}) from init/ into kspw-docker/"
+  cp ${newestBackupSqlGz} ~/kspw-docker/config/kspw-cron/db-backups
+  echo "Copying newest backup (${newestBackupSqlGz}) from init/ into kspw-docker/"
   ls -la ~/kspw-docker/config/kspw-cron/db-backups
-elif [ -f "*.sql"]; then
+elif [ -f "$newestBackupSql" ]; then
   # Restore from sql file(s)
   cp *.sql ~/kspw-docker/config/kspw-db/schema-with-data
   echo "Copying database sql files from init/ into kspw-docker/"

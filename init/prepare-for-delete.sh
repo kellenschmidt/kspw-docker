@@ -5,14 +5,17 @@
 
 rm ~/init/mysql-prod-*_*.sql.gz ~/init/*.sql
 
-backupFile="~/kspw-docker/config/kspw-cron/db-backups/mysql-prod-*_*.sql.gz"
-newestBackup=$(ls -t ${backupFile} | head -1)
+backupFileSqlGz="~/kspw-docker/config/kspw-db/database/schema-with-data/*.sql"
+newestBackupSqlGz=$(ls -t ${backupFileSqlGz} | head -1)
 
-if [ -f "$newestBackup" ]; then
-  cp ${newestBackup} ~/init
-  echo "Copying newest backup (${newestBackup}) from kspw-docker/ into init/"
+backupSql="~/init/*.sql"
+newestBackupSql=$(ls -t ${backupSql} | head -1)
+
+if [ -f "$newestBackupSqlGz" ]; then
+  cp ${newestBackupSqlGz} ~/init
+  echo "Copying newest backup (${newestBackupSqlGz}) from kspw-docker/ into init/"
   ls -la ~/init
-elif [ -f "~/kspw-docker/config/kspw-db/database/schema-with-data/*.sql"]; then
+elif [ -f "$newestBackupSql" ]; then
   cp ~/kspw-docker/config/kspw-db/database/schema-with-data/*.sql ~/init
   echo "Copying database sql files from kspw-docker/ into init/"
   ls -la ~/init

@@ -90,8 +90,8 @@ Environment variables file, `.env`, is required. Required variables:
 3. Configure security group to allow HTTP(80), HTTPS(443), and SSH(22), PhpMyAdmin(8080)
 4. Create and associate elastic IP address
 5. Optionally add custom password-protected keypair via SSH and authorized_keys
-  * Add public key to `~/.ssh/authorized_keys` on server
-  * Might need to remove current kellenschmidt.com entry from `~/.ssh/known_hosts` locally
+    * Add public key to `~/.ssh/authorized_keys` on server
+    * Might need to remove current kellenschmidt.com entry from `~/.ssh/known_hosts` locally
 6. Install Docker
 
 ```Shell
@@ -114,8 +114,8 @@ rm ~/kspw-docker.tar.gz
 ```
 
 9. Initialize container with proper environment variables and database files
-  * Edit `~/init/.env`
-  * Add database backup .sql.gz file or .sql file(s) to `~/init/`
-  * `bash ~/init/init-from-delete.sh`
+    * Edit `~/init/.env`
+    * Add database backup .sql.gz file or .sql file(s) to `~/init/`
+    * `bash ~/init/init-from-delete.sh`
 
 10. Start it up! `bash ~/kspw-docker/bin/start.sh prod`
