@@ -11,9 +11,11 @@ newestBackup=$(ls -t ${backupFile} | head -1)
 if [ -f "$newestBackup" ]; then
   cp ${newestBackup} ~/init
   echo "Copying newest backup (${newestBackup}) from kspw-docker/ into init/"
+  ls -la ~/init
 elif [ -f "~/kspw-docker/config/kspw-db/database/schema-with-data/*.sql"]; then
   cp ~/kspw-docker/config/kspw-db/database/schema-with-data/*.sql ~/init
   echo "Copying database sql files from kspw-docker/ into init/"
+  ls -la ~/init
 else
   echo "No init files found in kspw-docker"
 fi
