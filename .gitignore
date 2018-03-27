@@ -2,7 +2,7 @@ node_modules
 **/.DS_Store
 
 config/kspw-cron/db-backups
-config/kspw-db/database/initialize
-config/kspw-db/database/schema-with-data/*
+config/kspw-db/initialize
+config/kspw-db/schema-with-data/*
 **/*.com/
 **/*.env

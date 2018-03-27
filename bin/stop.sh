@@ -13,4 +13,4 @@ docker rm kspw-web \
           kspw-cron \
           kspw-pma
 
-rm -r config/kspw-db/database/initialize
+rm -r config/kspw-db/initialize

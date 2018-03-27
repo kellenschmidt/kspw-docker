@@ -21,7 +21,7 @@ if [ -f "$newestBackupSqlGz" ]; then
   ls -la ~/kspw-docker/config/kspw-cron/db-backups
 elif [ -f "$newestBackupSql" ]; then
   # Restore from sql file(s)
-  cp *.sql ~/kspw-docker/config/kspw-db/schema-with-data
+  cp ~/init/*.sql ~/kspw-docker/config/kspw-db/schema-with-data
   echo "Copying database sql files from init/ into kspw-docker/"
   ls -la ~/kspw-docker/config/kspw-db/schema-with-data
 else

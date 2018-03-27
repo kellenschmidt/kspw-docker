@@ -41,8 +41,8 @@ Create environment variables file
 Preload database
 
 * Latest backup (from matching environment) will automatically be restored if one exists
-* If not restoring from backup, add SQL files to `config/kspw-db/database/schema-with-data`
-* Otherwise, the empty schema will be loaded from `config/kspw-db/database/schema-only`
+* If not restoring from backup, add SQL files to `config/kspw-db/schema-with-data`
+* Otherwise, the empty schema will be loaded from `config/kspw-db/schema-only`
 
 Edit hosts file
 
@@ -65,7 +65,7 @@ Environment variables file, `.env`, is required. Required variables:
 
 `MYSQL_ROOT_PASSWORD`: Required (but ignored). Overwritten by Docker. Find new MySQL root password with `docker logs kspw-db 2>&1 | grep GENERATED`
 
-`MYSQL_USER`: Required. Username of non-root MySQL user. Note: Must also edit `config/kspw-db/database/permissions/grant_permissions.sql`
+`MYSQL_USER`: Required. Username of non-root MySQL user. Note: Must also edit `config/kspw-db/permissions/grant_permissions.sql`
 
 `MYSQL_PASSWORD`: Required. Password of non-root MySQL user.
 
