@@ -3,7 +3,7 @@
 # Arguments
 # $1: Name of environment that is being deployed
 
-backupFile="config/kspw-cron/db-backups/mysql-$1-*_*.sql.gz"
+backupFile=config/kspw-cron/db-backups/mysql-$1-*_*.sql.gz
 newestBackup=$(ls -t ${backupFile} | head -1)
 
 # Make directory for active sql files but also make empty directories

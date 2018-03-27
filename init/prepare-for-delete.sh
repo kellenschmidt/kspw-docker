@@ -5,10 +5,10 @@
 
 rm ~/init/mysql-prod-*_*.sql.gz ~/init/*.sql
 
-backupFileSqlGz="~/kspw-docker/config/kspw-db/database/schema-with-data/*.sql"
+backupFileSqlGz=~/kspw-docker/config/kspw-db/database/schema-with-data/*.sql
 newestBackupSqlGz=$(ls -t ${backupFileSqlGz} | head -1)
 
-backupSql="~/init/*.sql"
+backupSql=~/init/*.sql
 newestBackupSql=$(ls -t ${backupSql} | head -1)
 
 if [ -f "$newestBackupSqlGz" ]; then

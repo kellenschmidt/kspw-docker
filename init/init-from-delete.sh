@@ -8,10 +8,10 @@ if [ ! -d ~/init ]; then
   echo "Copying init folder from kspw-docker/ to ~/"
 fi
 
-backupSqlGz="~/init/mysql-prod-*_*.sql.gz"
+backupSqlGz=~/init/mysql-prod-*_*.sql.gz
 newestBackupSqlGz=$(ls -t ${backupSqlGz} | head -1)
 
-backupSql="~/init/*.sql"
+backupSql=~/init/*.sql
 newestBackupSql=$(ls -t ${backupSql} | head -1)
 
 if [ -f "$newestBackupSqlGz" ]; then
