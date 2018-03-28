@@ -3,15 +3,15 @@
 ##############################
 
 # At every minute
-# * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
+* * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
 
-# At every 8:50am GMT every day
-50 8 * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
+# At 8:50 GMT on every 2nd day
+50 8 */2 * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
 
 # At minute 0 past hour 0 and 12
 # 0 0,12 * * * certbot-auto renew --pre-hook "bash /home/bin/public_to_temp.sh" --post-hook "bash /home/bin/temp_to_public.sh" >> /var/log/cron.log 2>&1
 
-# At 9am GMT (3am CT) on the 1st of every other month (Feb, Apr, etc.)
+# At 9:00 GMT on the 1st of every other month (Feb, Apr, etc.)
 0 9 1 */2 * certbot-auto renew --pre-hook "bash /home/bin/public_to_temp.sh" --post-hook "bash /home/bin/temp_to_public.sh" >> /var/log/cron.log 2>&1
 
 #

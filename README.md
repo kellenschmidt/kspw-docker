@@ -114,9 +114,14 @@ rm ~/kspw-docker.tar.gz
 ```
 
 9. Initialize container with proper environment variables and database files
-    * Edit `~/kspw-docker/init/.env`
-    * Add database backup .sql.gz file or .sql file(s) to `~/init/`
-    * `bash ~/kspw-docker/init/init-from-delete.sh`
-      * `bash ~/init/init-from-delete.sh` if redeploying on existing server
+    * Edit `kspw-docker/init/.env`
+    * Add database backup .sql.gz file or .sql file(s) to `kspw-docker/init/`
+    * `bash kspw-docker/init/init-from-delete.sh`
+      * `bash init/init-from-delete.sh` if redeploying on existing server
 
-10. Start it up! `bash ~/kspw-docker/bin/start.sh prod`
+10. Start it up!
+
+```Shell
+cd kspw-docker
+bash bin/start.sh prod
+```
