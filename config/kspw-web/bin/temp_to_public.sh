@@ -3,10 +3,10 @@
 # Arguments
 # None
 
-rm -rf /var/www/kellenschmidt.com/public \\
-       /var/www/api.kellenschmidt.com/public \\
-       /var/www/urlshortenerphp.kellenschmidt.com/public \\
-       /var/www/test.kellenschmidt.com/public \\
+rm -rf /var/www/kellenschmidt.com/public \
+       /var/www/api.kellenschmidt.com/public \
+       /var/www/urlshortenerphp.kellenschmidt.com/public \
+       /var/www/test.kellenschmidt.com/public \
        /var/www/testapi.kellenschmidt.com/public
 
 mv /var/www/kellenschmidt.com/public_temp /var/www/kellenschmidt.com/public

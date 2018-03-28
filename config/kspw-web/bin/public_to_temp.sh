@@ -9,8 +9,8 @@ mv /var/www/urlshortenerphp.kellenschmidt.com/public /var/www/urlshortenerphp.ke
 mv /var/www/test.kellenschmidt.com/public /var/www/test.kellenschmidt.com/public_temp
 mv /var/www/testapi.kellenschmidt.com/public /var/www/testapi.kellenschmidt.com/public_temp
 
-mkdir /var/www/kellenschmidt.com/public \\
-      /var/www/api.kellenschmidt.com/public \\
-      /var/www/urlshortenerphp.kellenschmidt.com/public \\
-      /var/www/test.kellenschmidt.com/public \\
+mkdir /var/www/kellenschmidt.com/public \
+      /var/www/api.kellenschmidt.com/public \
+      /var/www/urlshortenerphp.kellenschmidt.com/public \
+      /var/www/test.kellenschmidt.com/public \
       /var/www/testapi.kellenschmidt.com/public
