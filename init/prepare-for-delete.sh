@@ -3,6 +3,11 @@
 # Arguments
 # None
 
+if [ ! -d ~/init ]; then
+  cp -r ~/kspw-docker/init ~/init
+  echo "Copying init folder from kspw-docker/ to ~/"
+fi
+
 rm ~/init/mysql-prod-*_*.sql.gz ~/init/*.sql
 
 backupFileSqlGz=~/kspw-docker/config/kspw-db/schema-with-data/*.sql

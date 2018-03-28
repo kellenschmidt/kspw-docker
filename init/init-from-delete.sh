@@ -16,11 +16,13 @@ newestBackupSql=$(ls -t ${backupSql} | head -1)
 
 if [ -f "$newestBackupSqlGz" ]; then
   # Restore the newest backup
+  mkdir ~/kspw-docker/config/kspw-cron/db-backups
   cp ${newestBackupSqlGz} ~/kspw-docker/config/kspw-cron/db-backups
   echo "Copying newest backup (${newestBackupSqlGz}) from init/ into kspw-docker/"
   ls -la ~/kspw-docker/config/kspw-cron/db-backups
 elif [ -f "$newestBackupSql" ]; then
   # Restore from sql file(s)
+  mkdir ~/kspw-docker/config/kspw-db/schema-with-data/
   cp ~/init/*.sql ~/kspw-docker/config/kspw-db/schema-with-data
   echo "Copying database sql files from init/ into kspw-docker/"
   ls -la ~/kspw-docker/config/kspw-db/schema-with-data
