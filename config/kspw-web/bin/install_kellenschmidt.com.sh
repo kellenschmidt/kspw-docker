@@ -9,7 +9,7 @@ cd /var/www/kellenschmidt.com
 if [ "$1" == "docker" ]; then
 	git checkout -b dev origin/dev
 fi
-npm install
+yarn install
 
 if [ "$1" != "docker" ]; then
 	# Increase max memory usage of process for server
