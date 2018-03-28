@@ -9,7 +9,7 @@ if [ "$1" != "docker" ]; then
 
   bash /home/bin/public_to_temp.sh
 
-  certbot-auto --non-interactive --agree-tos --apache --email kellenschmidt31@gmail.com --domains kellenschmidt.com,api.kellenschmidt.com,urlshortenerphp.kellenschmidt.com,test.kellenschmidt.com,testapi.kellenschmidt.com > /var/log/certs.log
+  certbot-auto --non-interactive --agree-tos --redirect --apache --email kellenschmidt31@gmail.com --domains kellenschmidt.com,api.kellenschmidt.com,urlshortenerphp.kellenschmidt.com,test.kellenschmidt.com,testapi.kellenschmidt.com > /var/log/certs.log
 
   bash /home/bin/temp_to_public.sh
 

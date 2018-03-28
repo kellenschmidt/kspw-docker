@@ -17,4 +17,4 @@ docker-compose -f config/docker-compose.yml build --no-cache
 docker-compose -f config/docker-compose.yml up -d --build --force-recreate 
 
 # Doesn't work when executed at end of Dockerfile
-docker exec kspw-web /home/bin/get_certs_set_crontab.sh $1
+docker exec kspw-web bash /home/bin/get_certs_set_crontab.sh $1
