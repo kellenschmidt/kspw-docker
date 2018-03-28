@@ -39,5 +39,3 @@ RUN a2ensite kellenschmidt.com && \
     a2ensite test.kellenschmidt.com && \
     a2ensite testapi.kellenschmidt.com
 RUN service apache2 restart
-
-RUN bash /home/bin/get_certs_set_crontab.sh ${ENVIRONMENT}

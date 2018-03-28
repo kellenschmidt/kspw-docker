@@ -14,4 +14,6 @@ if [ "$1" != "docker" ]; then
   bash /home/bin/temp_to_public.sh
 
   crontab /home/cron/renew-certs.cron
+
+  service cron start
 fi

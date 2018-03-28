@@ -3,7 +3,7 @@
 ##############################
 
 # At every minute
-* * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
+# * * * * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
 
 # At 8:50 GMT on every 2nd day
 50 8 */2 * * echo "Heartbeat $(date)" >> /var/log/cron.log 2>&1
