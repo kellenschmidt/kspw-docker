@@ -19,6 +19,7 @@ RUN mkdir /var/log/apache2/kellenschmidt.com && \
     mkdir /home/cron
 
 ADD ./bin /home/bin
+ADD ./cron /home/cron
 
 RUN bash /home/bin/install_kellenschmidt.com.sh ${ENVIRONMENT}
 RUN bash /home/bin/install_api.kellenschmidt.com.sh ${ENVIRONMENT}

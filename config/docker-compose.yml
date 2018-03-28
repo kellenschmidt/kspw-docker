@@ -11,8 +11,6 @@ services:
     ports:
       - 80:80
       - 443:443
-    volumes:
-      - ./kspw-web/cron:/home/cron
     links:
       - kspw-db
     environment:
