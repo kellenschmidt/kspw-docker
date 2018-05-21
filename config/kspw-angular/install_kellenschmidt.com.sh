@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Arguments
 # $1: Name of environment that is being deployed
@@ -11,7 +11,7 @@ if [ "$1" == "dev" ]; then
 	git checkout -b dev origin/dev
 	rm /etc/apache2/conf.d/test.kellenschmidt.com.conf
 elif [ "$1" == "test" ]; then
-	git checkout -b dev origin/staging
+	git checkout -b staging origin/staging
 	rm /etc/apache2/conf.d/kellenschmidt.com.conf
 else
 	rm /etc/apache2/conf.d/test.kellenschmidt.com.conf
