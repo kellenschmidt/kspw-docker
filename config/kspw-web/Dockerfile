@@ -2,16 +2,13 @@ FROM php:7-apache
 
 ARG ENVIRONMENT
 
-RUN apt-get update -y && apt-get install -y git wget cron nano gnupg zip unzip
-
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
-    apt-get install -y nodejs
-
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+RUN apt-get update -y && apt-get install -y git wget cron nano gnupg zip unzip && \
+    curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
+    apt-get install -y nodejs && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-    apt-get update && apt-get install yarn
-
-RUN docker-php-ext-install pdo pdo_mysql mysqli
+    apt-get update && apt-get install yarn && \
+    docker-php-ext-install pdo pdo_mysql mysqli
 
 RUN mkdir /var/log/apache2/kellenschmidt.com && \
     mkdir /var/log/apache2/api.kellenschmidt.com/ && \
@@ -25,19 +22,19 @@ RUN mkdir /var/log/apache2/kellenschmidt.com && \
 ADD ./bin /home/bin
 ADD ./cron /home/cron
 
-RUN bash /home/bin/install_kellenschmidt.com.sh ${ENVIRONMENT}
-RUN bash /home/bin/install_api.kellenschmidt.com.sh ${ENVIRONMENT}
-RUN bash /home/bin/install_urlshortenerphp.kellenschmidt.com.sh ${ENVIRONMENT}
-RUN bash /home/bin/install_test.kellenschmidt.com.sh ${ENVIRONMENT}
-RUN bash /home/bin/install_testapi.kellenschmidt.com.sh ${ENVIRONMENT}
+RUN bash /home/bin/install_kellenschmidt.com.sh ${ENVIRONMENT} && \
+    bash /home/bin/install_api.kellenschmidt.com.sh ${ENVIRONMENT} && \
+    bash /home/bin/install_urlshortenerphp.kellenschmidt.com.sh ${ENVIRONMENT} && \
+    bash /home/bin/install_test.kellenschmidt.com.sh ${ENVIRONMENT} && \
+    bash /home/bin/install_testapi.kellenschmidt.com.sh ${ENVIRONMENT}
 
 ADD ./sites-available /etc/apache2/sites-available
 
 # Set default ServerName (to remove warning)
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-RUN a2enmod rewrite
-RUN a2ensite kellenschmidt.com && \
+RUN a2enmod rewrite && \
+    a2ensite kellenschmidt.com && \
     a2ensite api.kellenschmidt.com && \
     a2ensite urlshortenerphp.kellenschmidt.com && \
     a2ensite test.kellenschmidt.com && \

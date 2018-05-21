@@ -51,13 +51,13 @@ Edit hosts file
 
 ### Docker Scripts
 
-`npm run start-dev`: Starts the Docker containers locally and installs code for development. The frontend can be accessed from http://kspw. The backend can be accessed from http://api.kspw.
+`yarn run start-dev`: Starts the Docker containers locally and installs code for development. The frontend can be accessed from http://kspw. The backend can be accessed from http://api.kspw.
 
-`npm run stop`: Stops and removes the docker containers.
+`yarn run stop`: Stops and removes the docker containers.
 
-`npm run start-prod`: Starts the Docker containers and installs code for production. The frontend can be accessed from http://kellenschmidt.com. The backend can be accessed from http://api.kellenschmidt.com.
+`yarn run start-prod`: Starts the Docker containers and installs code for production. The frontend can be accessed from http://kellenschmidt.com. The backend can be accessed from http://api.kellenschmidt.com.
 
-`npm run start-test`: Starts the Docker containers and installs code for testing. The frontend can be accessed from http://test.kellenschmidt.com. The backend can be accessed from http://testapi.kellenschmidt.com.
+`yarn run start-test`: Starts the Docker containers and installs code for testing. The frontend can be accessed from http://test.kellenschmidt.com. The backend can be accessed from http://testapi.kellenschmidt.com.
 
 ### Environment Variables
 
