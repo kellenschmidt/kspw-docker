@@ -1,5 +1,5 @@
 # docker build --build-arg ENVIRONMENT=dev -t kellenschmidt/kspw-slimphp:v_ .
-# docker run --env-file ~kspw-k8s/kspw-slimphp.env -p 80:80 -d kellenschmidt/kspw-slimphp:v_
+# docker run --env-file ./kspw-slimphp.env -p 80:80 -d kellenschmidt/kspw-slimphp:v_
 
 FROM php:7-apache
 
