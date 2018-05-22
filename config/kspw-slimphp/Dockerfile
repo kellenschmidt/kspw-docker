@@ -9,11 +9,9 @@ RUN apt-get update -y && apt-get install -y git wget zip unzip && apt-get autocl
     docker-php-ext-install pdo pdo_mysql mysqli
 
 ADD install_slimphp_api.sh /home
+ADD apache2.conf /etc/apache2
 
 RUN bash /home/install_slimphp_api.sh ${ENVIRONMENT}
-
-# Set default ServerName (to remove warning)
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
 RUN a2enmod rewrite && \
     service apache2 restart

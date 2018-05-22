@@ -15,6 +15,7 @@ fi
 sh install_composer.sh
 php composer.phar install
 
+shopt -s dotglob				# Enables moving dotfiles
 mv /home/api.kellenschmidt.com/* /var/www
 mv /var/www/public/* /var/www/html
 rm -r /home/api.kellenschmidt.com /var/www/public
