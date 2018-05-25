@@ -1,10 +1,7 @@
-# docker build --build-arg ENVIRONMENT=dev -t kellenschmidt/kspw-mysql-cron:v_ .
-# docker run --env-file ./kspw-mysql-cron.env -d kellenschmidt/kspw-mysql-cron:v_
+# docker build -t kellenschmidt/kspw-mysql-cron .
+# docker run --env-file ./kspw-mysql-cron.env -d kellenschmidt/kspw-mysql-cron
 
 FROM alpine:3.7
-
-ARG ENVIRONMENT
-ENV ENV=$ENVIRONMENT
 
 RUN apk update && apk add --no-cache mysql-client wget bash curl
 
